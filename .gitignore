@@ -57,5 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
-.idyll
-build
+# Project specific
+.idyll/
+build/
+ngram-histories.csv
+cdp-datasets/
