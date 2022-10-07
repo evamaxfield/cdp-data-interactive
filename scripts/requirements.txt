@@ -1,0 +1,3 @@
+cdp-data==0.0.7
+pyarrow
+ipython
