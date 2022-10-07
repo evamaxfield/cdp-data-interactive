@@ -11,8 +11,7 @@
   "type": "module",
   "scripts": {
     "start": "idyll",
-    "build": "idyll build",
-    "publish": "idyll publish"
+    "build": "idyll build"
   },
   "dependencies": {
     "d3": "7",
