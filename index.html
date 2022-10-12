@@ -4008,7 +4008,7 @@ vertical-align: -.125em;
   <li><a href="#council-data-project" id="toc-council-data-project" class="nav-link" data-scroll-target="#council-data-project">Council Data Project</a></li>
   <li><a href="#previous-municipal-meeting-datasets" id="toc-previous-municipal-meeting-datasets" class="nav-link" data-scroll-target="#previous-municipal-meeting-datasets">Previous Municipal Meeting Datasets</a></li>
   </ul></li>
-  <li><a href="#cdp---councils-in-action-dataset" id="toc-cdp---councils-in-action-dataset" class="nav-link" data-scroll-target="#cdp---councils-in-action-dataset">CDP - Councils in Action Dataset</a></li>
+  <li><a href="#the-councils-in-action-dataset" id="toc-the-councils-in-action-dataset" class="nav-link" data-scroll-target="#the-councils-in-action-dataset">The Councils in Action Dataset</a></li>
   </ul>
 </nav>
 </nav>
@@ -4055,10 +4055,10 @@ vertical-align: -.125em;
 
 <section id="quarto" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>This document will explain what <a href="https://councildataproject.org">Council Data Project</a> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&amp;T AM22 conference paper <span class="citation" data-cites="cdp-asist-am22">[<a href="#ref-cdp-asist-am22" role="doc-biblioref">1</a>]</span>.</p>
+<p>This document will explain what <a href="https://councildataproject.org">Council Data Project</a> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an slightly modified, up-to-date, interactive version our ASIS&amp;T AM22 conference paper <span class="citation" data-cites="cdp-asist-am22">[<a href="#ref-cdp-asist-am22" role="doc-biblioref">1</a>]</span>.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-cdp-asist-am22" class="csl-entry" role="doc-biblioentry">
 <div class="csl-left-margin">1. </div><div class="csl-right-inline">Brown, Eva Maxfield, and Weber, Nicholas (2022). Councils in action: Automating the curation of municipal governance data for research. <a href="https://doi.org/10.48550/ARXIV.2204.09110">10.48550/ARXIV.2204.09110</a>.</div>
-</div></div><p>If you want to skip to the data gather, visualization, and plotting code, jump to <a href="#councils-in-action">#councils-in-action</a>.</p>
+</div></div><p>If you want to skip to the data gather, visualization, and plotting code, jump to <a href="#the-councils-in-action-dataset">#the-councils-in-action-dataset</a>.</p>
 </section>
 <section id="introduction" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
@@ -4126,8 +4126,8 @@ vertical-align: -.125em;
 <p>These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.</p>
 </section>
 </section>
-<section id="cdp---councils-in-action-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="cdp---councils-in-action-dataset">CDP - Councils in Action Dataset</h2>
+<section id="the-councils-in-action-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="the-councils-in-action-dataset">The Councils in Action Dataset</h2>
 <div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -4146,7 +4146,7 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 </details>
 <div class="cell" data-execution_count="1">
 <details>
-<summary>Show code for generated paragraph and table</summary>
+<summary>Show Code for Generated Paragraph and Table</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown rendering</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4204,33 +4204,30 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> (</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Using Council Data Project infrastructures we assemble longitudinal data from &quot;</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;across multiple municipal councils to ease manual curation for researchers. &quot;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. Many CDP instances also include the minutes item &quot;</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;details for each meeting (legislative items, votes, and attached documents). &quot;</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;@tbl-cdp-data-coverage provides specific details as to the number of meetings &quot;</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;from each municipal council and their oldest and newest event dates.&quot;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. @tbl-cdp-data-coverage provides specific details &quot;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;as to the number of meetings from each municipal council and their &quot;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;oldest and newest event dates.&quot;</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/share/miniconda/envs/cdp-data-interactive/lib/python3.10/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
   from .autonotebook import tqdm as notebook_tqdm</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<p>Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of <code>2022-10-12</code>, the Councils in Action dataset, includes a video file, audio file, and transcript for <code>2338</code> meetings from <code>17</code> different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). <a href="#tbl-cdp-data-coverage">Table 1</a> provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</p>
+<p>As of <code>2022-10-12</code>, the Councils in Action dataset, includes a video file, audio file, and transcript for <code>2338</code> meetings from <code>17</code> different municipal councils. <a href="#tbl-cdp-data-coverage">Table 1</a> provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</p>
 <div id="tbl-cdp-data-coverage" class="anchored">
 <table class="table table-sm table-striped">
 <caption>Table 1: Councils in Action Data Coverage</caption>
@@ -4557,9 +4554,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>This document will explain what <span class="co">[</span><span class="ot">Council Data Project</span><span class="co">](https://councildataproject.org)</span> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&amp;T AM22 conference paper <span class="co">[</span><span class="ot">@cdp-asist-am22</span><span class="co">]</span>.</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>This document will explain what <span class="co">[</span><span class="ot">Council Data Project</span><span class="co">](https://councildataproject.org)</span> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an slightly modified, up-to-date, interactive version our ASIS&amp;T AM22 conference paper <span class="co">[</span><span class="ot">@cdp-asist-am22</span><span class="co">]</span>.</span>
 <span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>If you want to skip to the data gather, visualization, and plotting code, jump to <span class="co">[</span><span class="ot">#councils-in-action</span><span class="co">](#councils-in-action)</span>.</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>If you want to skip to the data gather, visualization, and plotting code, jump to <span class="co">[</span><span class="ot">#the-councils-in-action-dataset</span><span class="co">](#the-councils-in-action-dataset)</span>.</span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
@@ -4606,7 +4603,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.</span>
 <span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## CDP - Councils in Action Dataset</span></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Councils in Action Dataset</span></span>
 <span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance=&quot;simple&quot;}</span>
 <span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>This section replaces original paper text with auto-generated text to stay up-to-date with the state of the dataset.</span>
@@ -4622,7 +4619,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: &quot;Show code for generated paragraph and table&quot;</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: &quot;Show Code for Generated Paragraph and Table&quot;</span></span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-cdp-data-coverage</span></span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: Councils in Action Data Coverage</span></span>
 <span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
@@ -4683,27 +4680,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
 <span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> (</span>
-<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Using Council Data Project infrastructures we assemble longitudinal data from &quot;</span></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;across multiple municipal councils to ease manual curation for researchers. &quot;</span></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. Many CDP instances also include the minutes item &quot;</span></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;details for each meeting (legislative items, votes, and attached documents). &quot;</span></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;@tbl-cdp-data-coverage provides specific details as to the number of meetings &quot;</span></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;from each municipal council and their oldest and newest event dates.&quot;</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. @tbl-cdp-data-coverage provides specific details &quot;</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;as to the number of meetings from each municipal council and their &quot;</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;oldest and newest event dates.&quot;</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
