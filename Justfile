@@ -2,11 +2,11 @@
 default:
   just --list
 
-# Store various dirs and filepaths
+# store various dirs and filepaths
 FILE_URI := justfile_directory() + "/index.qmd"
 BUILD_DIR := justfile_directory() + "/_build/"
 
-# Remove build files
+# remove build files
 clean:
     rm -fr {{BUILD_DIR}}
     rm -fr {{justfile_directory()}}/.quarto
