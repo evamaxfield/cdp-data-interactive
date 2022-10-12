@@ -11,28 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16
-    - uses: actions/setup-python@v4 
-      with:
-        python-version: '3.10'
 
-    - name: Install
-      run: |
-        npm ci
-        pip install -r scripts/requirements.txt
-    
-    - name: Generate Dataset
-      run: |
-        python scripts/generate-ngram-data.py
-
-    - name: Build
-      run: |
-        npm run build
-        touch build/.nojekyll
-
-    - name: Publish
-      uses: JamesIves/github-pages-deploy-action@v4
+    # Create and Activate Conda Env
+    - uses: conda-incubator/setup-miniconda@v2
       with:
-        folder: build/
+        activate-environment: cdp-data-interactive
+        environment-file: environment.yml
+
+    - name: Set up Quarto
+      uses: quarto-dev/quarto-actions/setup@v2
+
+    - name: Build and Publish to GitHub Pages
+      uses: quarto-dev/quarto-actions/publish@v2
+      with:
+        target: gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
