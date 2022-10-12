@@ -77,7 +77,7 @@ These two examples illustrate how transcript data from governance deliberations 
 ### CDP - Councils in Action
 
 ::: {.callout-note appearance="simple"}
-This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.
+This section replaces original paper text with auto-generated text to stay up-to-date with the state of the dataset.
 :::
 
 <details>
