@@ -1,35 +1,846 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
-    />
-    <title>Councils In Action</title>
-    <meta property="og:title" content="Councils In Action" />
-    <meta charset="utf-8" />
-    <meta property="og:type" content="article" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-    <meta property="og:description" content="An exploration of the data made available by Council Data Project" />
-    <meta property="description" content="An exploration of the data made available by Council Data Project" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
 
-    <link rel="stylesheet" href="static/idyll_styles.css" />
-  </head>
-  <body>
-    <div id="idyll-mount"><div data-reactroot=""><div class="idyll-root"><div class=" idyll-text-container"></div><div class="article-header" style="background:#222222;color:#ffffff"><h1 class="hed">Councils In Action</h1><h2 class="dek">An exploration of the data made available by Council Data Project</h2><div class="byline">By: <a target="_blank" href="https://evamaxfield.github.io" style="color:#ffffff">Eva Maxfield Brown</a></div><div class="idyll-pub-date">Oct 7, 2022</div></div><div class=" idyll-text-container"><h2 id="introduction">Introduction</h2><div class="table-container"><div><div class="table "><table role="table" style="margin-bottom:0"><thead style="display:flex;flex-direction:column;width:100%;min-width:300px"><tr role="row" style="display:inline-flex;flex-grow:1"><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">ngram</th><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">day_ngram_percent_usage</th><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">session_date</th></tr></thead><tbody role="rowgroup" style="display:flex;flex-direction:column;width:100%;min-width:300px"><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">thank</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">1.0640194</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">join</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.089163646</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">financ</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.089163646</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.26749092</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">committe</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.14860608</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr></tbody></table></div><div class="table-pagination" style="display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap;padding:3px;box-sizing:border-box;box-shadow:0 0 15px 0 rgb(0 0 0 / 10%);border-top:2px solid rgba(0,0,0,0.1)"><div class="table-pagination-previous" style="display:flex;flex:1;text-align:center"><button disabled="" style="box-sizing:border-box;margin:0;border:0;border-radius:3px;padding:6px;font-size:1em;color:rgba(0, 0, 0, 0.6);background:rgba(0, 0, 0, 0.1);cursor:default;width:100%;opacity:0.5">Previous</button></div><div class="table-pagination-center" style="display:flex;flex:1.5;flex-wrap:wrap;align-items:center;justify-content:space-around"><span style="display:flex;align-items:baseline">Page<!-- --> <!-- -->1<!-- --> <!-- -->of <!-- -->18578</span></div><div class="table-pagination-next" style="display:flex;flex:1;text-align:center"><button style="box-sizing:border-box;margin:0;border:0;border-radius:3px;padding:6px;font-size:1em;color:rgba(0, 0, 0, 0.6);background:rgba(0, 0, 0, 0.1);cursor:pointer;width:100%">Next</button></div></div></div></div><input type="text" class="" value="hous"/><span class="idyll-display">hous</span><div class="table-container"><div><div class="table "><table role="table" style="margin-bottom:0"><thead style="display:flex;flex-direction:column;width:100%;min-width:300px"><tr role="row" style="display:inline-flex;flex-grow:1"><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">ngram</th><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">day_ngram_percent_usage</th><th colSpan="1" role="columnheader" style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer">session_date</th></tr></thead><tbody role="rowgroup" style="display:flex;flex-direction:column;width:100%;min-width:300px"><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.26749092</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.26749092</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-02</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.69469833</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-07</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.03458612</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-08</td></tr><tr role="row" style="display:inline-flex;flex-grow:1"><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">hous</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">0.08025682</td><td style="flex:1;width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" role="cell">2022-03-09</td></tr></tbody></table></div><div class="table-pagination" style="display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap;padding:3px;box-sizing:border-box;box-shadow:0 0 15px 0 rgb(0 0 0 / 10%);border-top:2px solid rgba(0,0,0,0.1)"><div class="table-pagination-previous" style="display:flex;flex:1;text-align:center"><button disabled="" style="box-sizing:border-box;margin:0;border:0;border-radius:3px;padding:6px;font-size:1em;color:rgba(0, 0, 0, 0.6);background:rgba(0, 0, 0, 0.1);cursor:default;width:100%;opacity:0.5">Previous</button></div><div class="table-pagination-center" style="display:flex;flex:1.5;flex-wrap:wrap;align-items:center;justify-content:space-around"><span style="display:flex;align-items:baseline">Page<!-- --> <!-- -->1<!-- --> <!-- -->of <!-- -->12</span></div><div class="table-pagination-next" style="display:flex;flex:1;text-align:center"><button style="box-sizing:border-box;margin:0;border:0;border-radius:3px;padding:6px;font-size:1em;color:rgba(0, 0, 0, 0.6);background:rgba(0, 0, 0, 0.1);cursor:pointer;width:100%">Next</button></div></div></div></div><div></div><p>This is an Idyll post. It is generated via
-the file <code>index.idyll</code>. To compile this post using
-idyll, run the command <code>idyll</code> inside of this directory.</p><p>Idyll posts are designed to support interaction and
-data-driven graphics.</p><div class="d3-component" style="width:100%"></div><button>
-  Click Me.</button><p>Configuration can be done via the <code>idyll</code> field in <code>package.json</code>.</p><h2 id="markup">Markup</h2><p>Idyll is based on Markdown.</p><p>You can use familiar syntax
-to create <strong>bold</strong> (<code>**bold**</code> ) and <em>italic</em> (<code>*italic*</code> ) styles,</p><ul><li>lists</li><li>of</li><li>items,</li></ul><pre><code>* lists
-* of
-* items,</code></pre><ol><li>and numbered</li><li>lists</li><li>of items,</li></ol><pre><code>1. and numbered
-2. lists
-3. of items,</code></pre><p>in addition to <a href="https://idyll-lang.org">hyperlinks</a> and images:</p><img src="static/images/quill.svg" alt="quill"/><pre><code>![quill](static/images/quill.svg)</code></pre><h2 id="components">Components</h2><p>Components can be embedded using a bracket syntax:</p><pre><code>[Range /]</code></pre><p>and can contain nested content:</p><pre><code>[Equation]e = mc^{2}[/Equation]</code></pre><p>Components accept properties:</p><pre><code>[Range value:x min:0 max:1 /]</code></pre><p>that can be bound to variables to achieve interactivity (more in next section).</p><p>A variety of components are included by default. See <a href="https://idyll-lang.org/docs/components/">all the available components</a>. You can also use any html tag, for example: <code>[div] A div! [/div]</code>.</p><p>To create your own, add it to the <code>components/</code> folder. There are examples of how to use Idyll with React and D3 based components already included.</p><h2 id="interactivity">Interactivity</h2><p>Here is how you can instantiate a variable and bind it to a component:</p><input type="range" value="5" min="0" max="10" step="1"/><span class="idyll-display">5.00</span><pre><code>[var name:&quot;exampleVar&quot; value:5 /]
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-[Range min:0 max:10 value:exampleVar /]
-[Display value:exampleVar /]</code></pre><h2 id="learn-more">Learn More</h2><p>To learn more see the documentation at <a href="https://idyll-lang.org/docs/"><span><a href="https://idyll-lang.org/docs/">https://idyll-lang.org/docs/</a></span></a>,
-join our <a href="https://gitter.im/idyll-lang/Lobby">chatroom</a>, or see the project on <a href="https://github.com/idyll-lang/idyll">GitHub</a>.</p><hr/><h1 id="technical-details">Technical Details</h1><h2 id="installation">Installation</h2><ul><li>Make sure you have <code>idyll</code> installed (<code>npm i -g idyll</code>).</li><li>Clone this repo and run <code>npm install</code>.</li></ul><h2 id="developing-a-post-locally">Developing a post locally</h2><p>Run <code>idyll</code>.</p><h2 id="building-a-post-for-production">Building a post for production</h2><p>Run <code>idyll build</code>. The output will appear in the top-level <code>build</code> folder. To change the output location, change the <code>output</code> option in <code>package.json</code>.</p><h2 id="deploying">Deploying</h2><p>Make sure your post has been built, then deploy the docs folder via any static hosting service.</p><h2 id="dependencies">Dependencies</h2><p>You can install custom dependencies by running <code>npm install &lt;package-name&gt; --save</code>. Note that any collaborators will also need download the package locally by running <code>npm install</code> after pulling the changes.</p></div></div></div></div>
-    <script src="static/idyll_index.js"></script>
-  </body>
-</html>
+<meta name="author" content="Eva Maxfield Brown">
+<meta name="dcterms.date" content="2022-10-11">
+
+<title>Councils in Action</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
+
+
+<script src="pape_files/libs/clipboard/clipboard.min.js"></script>
+<script src="pape_files/libs/quarto-html/quarto.js"></script>
+<script src="pape_files/libs/quarto-html/popper.min.js"></script>
+<script src="pape_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="pape_files/libs/quarto-html/anchor.min.js"></script>
+<link href="pape_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="pape_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="pape_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="pape_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="pape_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#public-interest-technology-for-municipal-events" id="toc-public-interest-technology-for-municipal-events" class="nav-link" data-scroll-target="#public-interest-technology-for-municipal-events">Public Interest Technology for Municipal Events</a></li>
+  <li><a href="#council-data-project" id="toc-council-data-project" class="nav-link" data-scroll-target="#council-data-project">Council Data Project</a></li>
+  </ul></li>
+  <li><a href="#municipal-meeting-data" id="toc-municipal-meeting-data" class="nav-link" data-scroll-target="#municipal-meeting-data">Municipal Meeting Data</a>
+  <ul class="collapse">
+  <li><a href="#previous-government-meeting-datasets" id="toc-previous-government-meeting-datasets" class="nav-link" data-scroll-target="#previous-government-meeting-datasets">Previous Government Meeting Datasets</a></li>
+  <li><a href="#cdp---councils-in-action" id="toc-cdp---councils-in-action" class="nav-link" data-scroll-target="#cdp---councils-in-action">CDP - Councils in Action</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Councils in Action</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<p class="subtitle lead">An exploration of data made available by Council Data Project</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eva Maxfield Brown </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 11, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="abstract-title">Abstract</div>
+    Large scale comparative research into municipal governance is often prohibitively difficult due to a lack of high-quality data. Recent advances in speech-to-text algorithms and natural language processing techniques has made it possible to more easily collect and analyze this type of data. In this paper, we introduce an open-source platform, the <a href="https://councildataproject.org">Council Data Project</a> (CDP), to curate novel datasets for research into municipal governance. The contribution of this work is two-fold: 1. We demonstrate that CDP, as an infrastructure, can be used to assemble reliable comparative data across municipalities; 2. We provide exploratory analysis to show how CDP data can be used to gain insight into how municipal governments perform over time. We conclude by describing future directions for research on and with CDP such as the development of machine learning models for speaker annotation, outline generation, and named entity recognition to the linking of data for large-scale comparative research.
+  </div>
+</div>
+
+</header>
+
+<section id="quarto" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>This document will explain what <a href="https://councildataproject.org">Council Data Project</a> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&amp;T AM22 conference paper <span class="citation" data-cites="cdp-asist-am22">[<a href="#ref-cdp-asist-am22" role="doc-biblioref">1</a>]</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-cdp-asist-am22" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Brown, Eva Maxfield, and Weber, Nicholas (2022). Councils in action: Automating the curation of municipal governance data for research. <a href="https://doi.org/10.48550/ARXIV.2204.09110">10.48550/ARXIV.2204.09110</a>.</div>
+</div></div><p>If you want to skip to the data gather, visualization, and plotting code, jump to <a href="#councils-in-action">#councils-in-action</a>.</p>
+</section>
+<section id="introduction" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Federalism, where power devolves to states and municipalities, is a defining feature of US democracy. But, federalism also poses substantial challenges to the study of state and local governments - each state and each city or county in the USA has their own rules and regulations that structure a mode of governance. For this reason, political science research into local government is often referred to as a “black hole” <span class="citation" data-cites="urban-politics">[<a href="#ref-urban-politics" role="doc-biblioref">2</a>]</span>. It can be an extended exercise in data collection to determine the identity of elected officials across the 89,000 local governments in the USA, let alone measure and compare the performance of one system of local governance to another <span class="citation" data-cites="crowdsourcing-local-data">[<a href="#ref-crowdsourcing-local-data" role="doc-biblioref">3</a>]</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-urban-politics" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Sapotichne, J., Jones, B.D., and Wolfe, M. (2007). Is urban politics a black hole? Analyzing the boundary between political science and urban politics. Urban Affairs Review <em>43</em>, 76–106.</div>
+</div><div id="ref-crowdsourcing-local-data" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Sumner, J.L., Farris, E.M., and Holman, M.R. (2020). Crowdsourcing reliable local data. Political Analysis <em>28</em>, 244–262.</div>
+</div><div id="ref-open-meetings" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Alex Aichinger (2009). <a href="https://mtsu.edu/first-amendment/article/1214/open-meeting-laws-and-freedom-of-speech">Open meeting laws and freedom of speech</a>.</div>
+</div><div id="ref-gender-matter-leadership" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Ferreira, F., and Gyourko, J. (2014). Does gender matter for political leadership? The case of US mayors. Journal of Public Economics <em>112</em>, 24–39.</div>
+</div></div><p>Despite this challenge, there are common legal requirements for transparency in state and local government legislatures that can improve the quality, scale, and usefulness of data used to study local governance. Open meeting laws, also called sunshine laws, require that most meetings of state and local governments be open to the public, along with their decisions and records <span class="citation" data-cites="open-meetings">[<a href="#ref-open-meetings" role="doc-biblioref">4</a>]</span>. This means, in theory, recordings of a legislative session, bills and materials supporting the proposal of a bill, as well as voting outcomes are required to be publicly accessible. In practice, access to recordings and voting records is often hampered by closed, proprietary information systems that are difficult to navigate, search, and extract meaningful data for both citizens and researchers alike <span class="citation" data-cites="gender-matter-leadership">[<a href="#ref-gender-matter-leadership" role="doc-biblioref">5</a>]</span>.</p>
+<p>Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data <span class="citation" data-cites="cdp-joss">[<a href="#ref-cdp-joss" role="doc-biblioref">6</a>]</span>. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as “Councils in Action.”</p>
+<div class="no-row-height column-margin column-container"></div><div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Council Data Project data now covers many more cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="background" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<section id="public-interest-technology-for-municipal-events" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="public-interest-technology-for-municipal-events">Public Interest Technology for Municipal Events</h3>
+<p>A number of previous civic technology applications have created valuable and accessible local government data from publicly available information, but none have specifically focused on aggregating transcripts of legislative discussion. In the following section we review four of these applications, and note how they relate to but differ from CDP. <a href="https://github.com/codeforamerica/councilmatic">Councilmatic</a> was one of the first public interest technology projects to focus on making council information more accessible. Councilmatic is a system for processing and archiving past municipal council meetings and legislative information and tracking upcoming meetings. Councilmatic is entirely open-source and there are now working examples of this application being used in cities throughout the USA, including for Los Angeles, Chicago, New York City, and Oakland <span class="citation" data-cites="councilmatic">[<a href="#ref-councilmatic" role="doc-biblioref">7</a>]</span>. However, each instance of Councilmatic, at a city or county level, is entirely separate from each other in their setup and maintenance. This distributed architecture makes it difficult to collaboratively develop new features, and prohibits cross-municipality data aggregation.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-councilmatic" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">Poe, M., and Gregg, F. (2015). <a href="https://github.com/codeforamerica/councilmatic">City council legislative subscription service</a>.</div>
+</div><div id="ref-local-voices-network" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Roy, D. (2020). Local voices network: Bringing under-heard community voices, perspectives and stories forward for healthier public dialogue. In 2020 conference of the american association for applied linguistics (AAAL) (AAAL).</div>
+</div></div><p><a href="https://lvn.org/">Local Voices Network</a> (LVN), a project from Cortico AI, provides a powerful platform for generating, visualizing, and searching through transcripts of civic “conversations.” LVN tools are highly targeted at reaching out to communities, facilitating a small-group conversation, and making such conversations easy to digest via machine learning analysis and visualization <span class="citation" data-cites="local-voices-network">[<a href="#ref-local-voices-network" role="doc-biblioref">8</a>]</span>. Such facilitation of community conversations engineers a discussion about specific topics and places them into a standardized format rather than curating existing data into a standard form. LVN produces novel insight into community sentiment but at the high cost of facilitation and engineering.</p>
+<p><a href="https://github.com/biglocalnews">Big Local News</a> (BLN), from researchers at Stanford University has created a platform to obtain data, through web-scraping, from municipal councils across the country. Each scraper from BLN collects meeting assets such as documents, presentations, videos, captions, etc.. Further, there is currently no processing of the scraped data (e.g. transcript generation) in order to expand the usage of these documents to include council discussions for analysis.</p>
+<p><a href="https://blockparty.studio">Blockparty</a> is an emergent civic technology project which generates and analyzes meeting transcripts from New York City community council meetings. Blockparty creates and processes meeting transcripts to extract keywords and other potential highlights, and then publishes both the transcript and a keyword histogram to the web. Blockparty currently only serves New York City and without open-source code we are limited in understanding their deployment and data access mechanisms. Specifically, we do not know how researchers and civic hackers alike might deploy Blockparty for their own municipality, and more importantly, there is no structured open data produced by this project that can be analyzed for research purposes.</p>
+<p>Lastly, while many projects are focused on the collection and republishing of municipal meeting data (from documents, videos, and in some cases transcripts), it is rare for a project to address the data collection, aggregation, transformation, and linkage of data together. For example, Councilmatic is the only project from prior examples which additionally stores legislative outcomes and voting records. The storage of such data is a valuable attachment which allows for investigation not only from discussion but additionally against the legislative end result.</p>
+</section>
+<section id="council-data-project" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="council-data-project">Council Data Project</h3>
+<p>Council Data Project (CDP) attempts to improve upon state-of-the-art public interest technology projects by providing a low-cost, flexible and scalable open-source solution for generating a large standardized corpora of municipal council meetings. CDP can be deployed in any municipality with minimal configuration by a developer or city IT department. Using a simple Python-based ‘cookie-cutter template’ <span class="citation" data-cites="cookiecutter">[<a href="#ref-cookiecutter" role="doc-biblioref">9</a>]</span> a developer can configure a new CDP deployment with just a two-line installation process and fully deploy the instance once provided a function to gather events <span class="citation" data-cites="cdp-joss">[<a href="#ref-cdp-joss" role="doc-biblioref">6</a>]</span>. Once fully deployed, an instance of CDP will collect and process municipal meeting minutes, agendas, voting records, and crucially, the recorded video or audio of each meeting that is archived by a municipality. For every legislative meeting that CDP processes, the system generates a transcript from the provided video using a machine learning model that converts recorded audio to text (aka speech-to-text processing). On a continuous schedule CDP infrastructure then uses this corpus of transcripts to generate and update a keyword based index to enable search of meetings by keyword <span class="citation" data-cites="cdp-joss">[<a href="#ref-cdp-joss" role="doc-biblioref">6</a>]</span>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-cookiecutter" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Audrey Roy Greenfeld, C.C. <a href="https://github.com/cookiecutter/cookiecutter">A command-line utility that creates projects from cookiecutters (project templates), e.g. Creating a python package project from a python package project template.</a></div>
+</div><div id="ref-cdp-joss" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Brown, E.M., Huynh, T., Na, I., Ledbetter, B., Ticehurst, H., Liu, S., Gilles, E., Cho, S., Ragoler, S., Weber, N., <em>et al.</em> (2021). Council data project: Software for municipal data collection, analysis, and publication. Journal of Open Source Software <em>6</em>, 3904.</div>
+</div></div><p>To make CDP data more accessible to the public, and to provide an interface for building a deeper, contextual understanding, each CDP infrastructure also publishes a website (see <a href="#fig-seattle-events-page">Figure 1</a>). Users of CDP websites can search for municipal meetings using the keyword index and then retrieve the video of a meeting, the sentence time-stamped transcript (for reading and for jumping playback of video to a sentence start point), access the full minutes of the meeting, and view votes that took place during a meeting. Further, because CDP transforms municipal government data into a database specification, CDP also aggregates and publishes aggregate data - such as the entire voting records of city council members, or document timestamps that show when specific actions were taken on a piece of municipal legislation.</p>
+<div id="fig-seattle-events-page" class="quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="figure page-columns page-full">
+<p><img src="figs/seattle-events-screen.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption margin-caption">Figure 1: Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: <a href="https://councildataproject.org/seattle/">https://councildataproject.org/seattle/</a></figcaption><p></p>
+</figure>
+</div>
+<p>CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.</p>
+</section>
+</section>
+<section id="municipal-meeting-data" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="municipal-meeting-data">Municipal Meeting Data</h2>
+<section id="previous-government-meeting-datasets" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="previous-government-meeting-datasets">Previous Government Meeting Datasets</h3>
+<p>Municipal meeting data is used across a number of domains of research that are interested in the institutional design and functioning of local governments - from political science and sociology to legal scholarship. In the following section we highlight a study from Einstein et al. which investigated who participates in local meetings and a study from Jacobi and Schweers which investigated how gender, ideology, and seniority affect Supreme Court oral argument. Both studies relied upon utilizing meeting records (video or transcript) for analysis of participant behaviors.</p>
+<p>Einstein et al. provided a comprehensive look into who participates in local government. Specifically, they “[compiled and coded] new data on all citizen participants in planning and zoning board meetings dealing with the construction of multiple housing units in 97 Massachusetts cities and towns.” The researchers then matched, “thousands of individual participants to the Massachusetts voter file to explore who participates in local political meetings” <span class="citation" data-cites="einstein-local-gov-participates">[<a href="#ref-einstein-local-gov-participates" role="doc-biblioref">10</a>]</span>. This paper utilized text annotation and topic and sentiment encoding to first identify participants, and then determine what each participant did and did not support in regards to specific planning and zoning discussions. In their study, data collection and coding were done in a combined manual and automated process. Public comment coding and annotation was completed by identifying participants’ names and addresses when they spoke. Once the data had been manually collected, Einstein et al. used probabilistic name and address matching with Massachusetts voting records in order to match each participant to their voting record details and then manually verified matches.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-einstein-local-gov-participates" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Einstein, K.L., Palmer, M., and Glick, D.M. (2019). Who participates in local government? Evidence from meeting minutes. Perspectives on politics <em>17</em>, 28–46.</div>
+</div><div id="ref-justice-interrupted" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Jacobi, T., and Schweers, D. (2017). Justice, interrupted: The effect of gender, ideology, and seniority at supreme court oral arguments. Va. L. Rev. <em>103</em>, 1379.</div>
+</div></div><p>In a similar study which used mixed manual and automated methods of constructing a dataset for federal governance research, Jacobi and Schweers attempted to measure the effect of gender, ideology, and seniority at Supreme Court oral arguments. Their work processed hundreds of transcripts to search and record interruptions between the legal advocates and the Supreme Court Justices (and between Justices) <span class="citation" data-cites="justice-interrupted">[<a href="#ref-justice-interrupted" role="doc-biblioref">11</a>]</span>. Jacobi and Schweers work was made possible by two separate databases: an existing publicly available database of specifically Roberts Court oral arguments and a second database that was manually assembled to store in-depth analysis of interruption behaviors.</p>
+<p>These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.</p>
+</section>
+<section id="cdp---councils-in-action" class="level3">
+<h3 class="anchored" data-anchor-id="cdp---councils-in-action">CDP - Councils in Action</h3>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.</p>
+</div>
+</div>
+</div>
+<details>
+<summary>
+Original Paper Text
+</summary>
+Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle Washington and Portland Oregon and the county council of King County Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+</details>
+<div class="cell" data-execution_count="1">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown rendering</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Core computation</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_backend.database <span class="im">import</span> models <span class="im">as</span> db_models</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_data <span class="im">import</span> CDPInstances</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_data.utils <span class="im">import</span> connect_to_database</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all instance infrastructure strings</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ALL_INSTANCES <span class="op">=</span> [</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="bu">getattr</span>(CDPInstances, i)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">dir</span>(CDPInstances) <span class="cf">if</span> <span class="st">&quot;__&quot;</span> <span class="kw">not</span> <span class="kw">in</span> i</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dataset size and dates</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data_coverage_list <span class="op">=</span> []</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> instance <span class="kw">in</span> ALL_INSTANCES:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  connect_to_database(instance)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get all events to calculate size</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="bu">list</span>(db_models.Event.collection.fetch())</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  num_events <span class="op">=</span> <span class="bu">len</span>(events)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only continue if the instance has data</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num_events <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get earliest event datetime</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    current_earliest_datetime <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    current_latest_datetime <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> event <span class="kw">in</span> events:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        current_earliest_datetime <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> event.event_datetime <span class="op">&lt;</span> current_earliest_datetime</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      ):</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        current_earliest_datetime <span class="op">=</span> event.event_datetime</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>        current_latest_datetime <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> event.event_datetime <span class="op">&gt;</span> current_latest_datetime</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      ):</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>        current_latest_datetime <span class="op">=</span> event.event_datetime</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add instance data</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    data_coverage_list.append({</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Instance&quot;</span>: instance,</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Events&quot;</span>: num_events,</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Oldest Event&quot;</span>: current_earliest_datetime.date().isoformat(),</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Newest Event&quot;</span>: current_latest_datetime.date().isoformat(),</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># To dataframe</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>data_coverage <span class="op">=</span> pd.DataFrame(data_coverage_list)</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> <span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="st">Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). @tbl-cdp-data-coverage provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/cdp-data-interactive/lib/python3.10/site-packages/tqdm/auto.py:22: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<p>Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of <code>2022-10-12</code>, the Councils in Action dataset, includes a video file, audio file, and transcript for <code>2331</code> meetings from <code>17</code> different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). <a href="#tbl-cdp-data-coverage">Table 1</a> provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Show code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display table</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Markdown(data_coverage.to_markdown())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="tbl-cdp-data-coverage" class="anchored">
+<table class="table table-sm table-striped">
+<caption>Table 1: Councils in Action Data Coverage</caption>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 37%">
+<col style="width: 13%">
+<col style="width: 21%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;"></th>
+<th style="text-align: left;">Instance</th>
+<th style="text-align: right;">Events</th>
+<th style="text-align: left;">Oldest Event</th>
+<th style="text-align: left;">Newest Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">cdp-alameda-d3dabe54</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: left;">2022-01-05</td>
+<td style="text-align: left;">2022-10-05</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">cdp-albuquerque-1d29496e</td>
+<td style="text-align: right;">81</td>
+<td style="text-align: left;">2020-01-23</td>
+<td style="text-align: left;">2022-10-03</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">cdp-atlanta-37e7dd70</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">2022-09-06</td>
+<td style="text-align: left;">2022-10-03</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">cdp-boston-c384047b</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: left;">2021-08-18</td>
+<td style="text-align: left;">2022-10-05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">cdp-charlotte-98a7c348</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">2022-07-18</td>
+<td style="text-align: left;">2022-10-10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">cdp-denver-962aefef</td>
+<td style="text-align: right;">78</td>
+<td style="text-align: left;">2022-05-23</td>
+<td style="text-align: left;">2022-10-11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">6</td>
+<td style="text-align: left;">cdp-king-county-b656c71b</td>
+<td style="text-align: right;">145</td>
+<td style="text-align: left;">2021-01-05</td>
+<td style="text-align: left;">2022-10-11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">7</td>
+<td style="text-align: left;">cdp-long-beach-49323fe9</td>
+<td style="text-align: right;">374</td>
+<td style="text-align: left;">2020-01-15</td>
+<td style="text-align: left;">2022-10-07</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">cdp-louisville-6fd32a38</td>
+<td style="text-align: right;">411</td>
+<td style="text-align: left;">2020-01-06</td>
+<td style="text-align: left;">2022-10-06</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">cdp-milwaukee-9f60e352</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">2022-08-12</td>
+<td style="text-align: left;">2022-10-11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">10</td>
+<td style="text-align: left;">missoula-council-data-proj</td>
+<td style="text-align: right;">210</td>
+<td style="text-align: left;">2022-01-03</td>
+<td style="text-align: left;">2022-10-04</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">11</td>
+<td style="text-align: left;">cdp-mountain-view-7c8a47df</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">2022-08-16</td>
+<td style="text-align: left;">2022-10-04</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">cdp-oakland-ba81c097</td>
+<td style="text-align: right;">252</td>
+<td style="text-align: left;">2020-01-14</td>
+<td style="text-align: left;">2022-10-11</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">13</td>
+<td style="text-align: left;">cdp-portland-d2bbda97</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: left;">2021-07-07</td>
+<td style="text-align: left;">2022-10-05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">cdp-richmond-a3d06941</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">2022-08-15</td>
+<td style="text-align: left;">2022-10-10</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">cdp-san-jose-5d9db455</td>
+<td style="text-align: right;">74</td>
+<td style="text-align: left;">2020-01-07</td>
+<td style="text-align: left;">2022-10-05</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">cdp-seattle-21723dcf</td>
+<td style="text-align: right;">494</td>
+<td style="text-align: left;">2020-01-06</td>
+<td style="text-align: left;">2022-10-04</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- -->
+
+
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Councils in Action&quot;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;An exploration of data made available by Council Data Project&quot;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Eva Maxfield Brown&quot;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> &quot;October 11, 2022&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">date-modified:</span><span class="co"> &quot;`r Sys.Date()`&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> &quot;Large scale comparative research into municipal governance is often prohibitively difficult due to a lack of high-quality data. Recent advances in speech-to-text algorithms and natural language processing techniques has made it possible to more easily collect and analyze this type of data. In this paper, we introduce an open-source platform, the [Council Data Project](https://councildataproject.org) (CDP), to curate novel datasets for research into municipal governance. The contribution of this work is two-fold: 1. We demonstrate that CDP, as an infrastructure, can be used to assemble reliable comparative data across municipalities; 2. We provide exploratory analysis to show how CDP data can be used to gain insight into how municipal governments perform over time. We conclude by describing future directions for research on and with CDP such as the development of machine learning models for speaker annotation, outline generation, and named entity recognition to the linking of data for large-scale comparative research.&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="an">toc-location:</span><span class="co"> left</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">    self-contained: true</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="an">reference-location:</span><span class="co"> margin</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="an">citation-location:</span><span class="co"> margin</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="an">fig-cap-location:</span><span class="co"> margin</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> pape.bib</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="an">csl:</span><span class="co"> nature.csl</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>This document will explain what <span class="co">[</span><span class="ot">Council Data Project</span><span class="co">](https://councildataproject.org)</span> (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&amp;T AM22 conference paper <span class="co">[</span><span class="ot">@cdp-asist-am22</span><span class="co">]</span>.</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>If you want to skip to the data gather, visualization, and plotting code, jump to <span class="co">[</span><span class="ot">#councils-in-action</span><span class="co">](#councils-in-action)</span>.</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>Federalism, where power devolves to states and municipalities, is a defining feature of US democracy. But, federalism also poses substantial challenges to the study of state and local governments - each state and each city or county in the USA has their own rules and regulations that structure a mode of governance. For this reason, political science research into local government is often referred to as a “black hole” @urban-politics. It can be an extended exercise in data collection to determine the identity of elected officials across the 89,000 local governments in the USA, let alone measure and compare the performance of one system of local governance to another @crowdsourcing-local-data.</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>Despite this challenge, there are common legal requirements for transparency in state and local government legislatures that can improve the quality, scale, and usefulness of data used to study local governance. Open meeting laws, also called sunshine laws, require that most meetings of state and local governments be open to the public, along with their decisions and records @open-meetings. This means, in theory, recordings of a legislative session, bills and materials supporting the proposal of a bill, as well as voting outcomes are required to be publicly accessible. In practice, access to recordings and voting records is often hampered by closed, proprietary information systems that are difficult to navigate, search, and extract meaningful data for both citizens and researchers alike @gender-matter-leadership.</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data @cdp-joss. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as “Councils in Action.”</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance=&quot;simple&quot;}</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>Council Data Project data now covers many more cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Background</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### Public Interest Technology for Municipal Events</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>A number of previous civic technology applications have created valuable and accessible local government data from publicly available information, but none have specifically focused on aggregating transcripts of legislative discussion. In the following section we review four of these applications, and note how they relate to but differ from CDP. <span class="co">[</span><span class="ot">Councilmatic</span><span class="co">](https://github.com/codeforamerica/councilmatic)</span> was one of the first public interest technology projects to focus on making council information more accessible. Councilmatic is a system for processing and archiving past municipal council meetings and legislative information and tracking upcoming meetings. Councilmatic is entirely open-source and there are now working examples of this application being used in cities throughout the USA, including for Los Angeles, Chicago, New York City, and Oakland <span class="co">[</span><span class="ot">@councilmatic</span><span class="co">]</span>. However, each instance of Councilmatic, at a city or county level, is entirely separate from each other in their setup and maintenance. This distributed architecture makes it difficult to collaboratively develop new features, and prohibits cross-municipality data aggregation.</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Local Voices Network</span><span class="co">](https://lvn.org/)</span> (LVN), a project from Cortico AI, provides a powerful platform for generating, visualizing, and searching through transcripts of civic “conversations.” LVN tools are highly targeted at reaching out to communities, facilitating a small-group conversation, and making such conversations easy to digest via machine learning analysis and visualization <span class="co">[</span><span class="ot">@local-voices-network</span><span class="co">]</span>. Such facilitation of community conversations engineers a discussion about specific topics and places them into a standardized format rather than curating existing data into a standard form. LVN produces novel insight into community sentiment but at the high cost of facilitation and engineering.</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Big Local News</span><span class="co">](https://github.com/biglocalnews)</span> (BLN), from researchers at Stanford University has created a platform to obtain data, through web-scraping, from municipal councils across the country. Each scraper from BLN collects meeting assets such as documents, presentations, videos, captions, etc.. Further, there is currently no processing of the scraped data (e.g. transcript generation) in order to expand the usage of these documents to include council discussions for analysis.</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Blockparty</span><span class="co">](https://blockparty.studio)</span> is an emergent civic technology project which generates and analyzes meeting transcripts from New York City community council meetings. Blockparty creates and processes meeting transcripts to extract keywords and other potential highlights, and then publishes both the transcript and a keyword histogram to the web. Blockparty currently only serves New York City and without open-source code we are limited in understanding their deployment and data access mechanisms. Specifically, we do not know how researchers and civic hackers alike might deploy Blockparty for their own municipality, and more importantly, there is no structured open data produced by this project that can be analyzed for research purposes.</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>Lastly, while many projects are focused on the collection and republishing of municipal meeting data (from documents, videos, and in some cases transcripts), it is rare for a project to address the data collection, aggregation, transformation, and linkage of data together. For example, Councilmatic is the only project from prior examples which additionally stores legislative outcomes and voting records. The storage of such data is a valuable attachment which allows for investigation not only from discussion but additionally against the legislative end result.</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">### Council Data Project</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>Council Data Project (CDP) attempts to improve upon state-of-the-art public interest technology projects by providing a low-cost, flexible and scalable open-source solution for generating a large standardized corpora of municipal council meetings. CDP can be deployed in any municipality with minimal configuration by a developer or city IT department. Using a simple Python-based ‘cookie-cutter template’ <span class="co">[</span><span class="ot">@cookiecutter</span><span class="co">]</span> a developer can configure a new CDP deployment with just a two-line installation process and fully deploy the instance once provided a function to gather events <span class="co">[</span><span class="ot">@cdp-joss</span><span class="co">]</span>. Once fully deployed, an instance of CDP will collect and process municipal meeting minutes, agendas, voting records, and crucially, the recorded video or audio of each meeting that is archived by a municipality. For every legislative meeting that CDP processes, the system generates a transcript from the provided video using a machine learning model that converts recorded audio to text (aka speech-to-text processing). On a continuous schedule CDP infrastructure then uses this corpus of transcripts to generate and update a keyword based index to enable search of meetings by keyword <span class="co">[</span><span class="ot">@cdp-joss</span><span class="co">]</span>.</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>To make CDP data more accessible to the public, and to provide an interface for building a deeper, contextual understanding, each CDP infrastructure also publishes a website (see @fig-seattle-events-page). Users of CDP websites can search for municipal meetings using the keyword index and then retrieve the video of a meeting, the sentence time-stamped transcript (for reading and for jumping playback of video to a sentence start point), access the full minutes of the meeting, and view votes that took place during a meeting. Further, because CDP transforms municipal government data into a database specification, CDP also aggregates and publishes aggregate data - such as the entire voting records of city council members, or document timestamps that show when specific actions were taken on a piece of municipal legislation.</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)</span><span class="co">](figs/seattle-events-screen.png)</span>{#fig-seattle-events-page}</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Municipal Meeting Data</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="fu">### Previous Government Meeting Datasets</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>Municipal meeting data is used across a number of domains of research that are interested in the institutional design and functioning of local governments - from political science and sociology to legal scholarship. In the following section we highlight a study from Einstein et al. which investigated who participates in local meetings and a study from Jacobi and Schweers which investigated how gender, ideology, and seniority affect Supreme Court oral argument. Both studies relied upon utilizing meeting records (video or transcript) for analysis of participant behaviors.</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>Einstein et al. provided a comprehensive look into who participates in local government. Specifically, they &quot;<span class="co">[</span><span class="ot">compiled and coded</span><span class="co">]</span> new data on all citizen participants in planning and zoning board meetings dealing with the construction of multiple housing units in 97 Massachusetts cities and towns.” The researchers then matched, “thousands of individual participants to the Massachusetts voter file to explore who participates in local political meetings&quot; <span class="co">[</span><span class="ot">@einstein-local-gov-participates</span><span class="co">]</span>. This paper utilized text annotation and topic and sentiment encoding to first identify participants, and then determine what each participant did and did not support in regards to specific planning and zoning discussions. In their study, data collection and coding were done in a combined manual and automated process. Public comment coding and annotation was completed by identifying participants&#39; names and addresses when they spoke. Once the data had been manually collected, Einstein et al. used probabilistic name and address matching with Massachusetts voting records in order to match each participant to their voting record details and then manually verified matches.</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>In a similar study which used mixed manual and automated methods of constructing a dataset for federal governance research, Jacobi and Schweers attempted to measure the effect of gender, ideology, and seniority at Supreme Court oral arguments. Their work processed hundreds of transcripts to search and record interruptions between the legal advocates and the Supreme Court Justices (and between Justices) <span class="co">[</span><span class="ot">@justice-interrupted</span><span class="co">]</span>. Jacobi and Schweers work was made possible by two separate databases: an existing publicly available database of specifically Roberts Court oral arguments and a second database that was manually assembled to store in-depth analysis of interruption behaviors.</span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### CDP - Councils in Action</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>::: {.callout-note appearance=&quot;simple&quot;}</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;details&gt;</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;summary&gt;</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>Original Paper Text</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/summary&gt;</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle Washington and Portland Oregon and the county council of King County Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/details&gt;</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: &quot;Show code&quot;</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown rendering</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Core computation</span></span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_backend.database <span class="im">import</span> models <span class="im">as</span> db_models</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_data <span class="im">import</span> CDPInstances</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cdp_data.utils <span class="im">import</span> connect_to_database</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all instance infrastructure strings</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>ALL_INSTANCES <span class="op">=</span> [</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>  <span class="bu">getattr</span>(CDPInstances, i)</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">dir</span>(CDPInstances) <span class="cf">if</span> <span class="st">&quot;__&quot;</span> <span class="kw">not</span> <span class="kw">in</span> i</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Get dataset size and dates</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>data_coverage_list <span class="op">=</span> []</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> instance <span class="kw">in</span> ALL_INSTANCES:</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a>  connect_to_database(instance)</span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Get all events to calculate size</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>  events <span class="op">=</span> <span class="bu">list</span>(db_models.Event.collection.fetch())</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>  num_events <span class="op">=</span> <span class="bu">len</span>(events)</span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Only continue if the instance has data</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> num_events <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get earliest event datetime</span></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>    current_earliest_datetime <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a>    current_latest_datetime <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> event <span class="kw">in</span> events:</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>        current_earliest_datetime <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> event.event_datetime <span class="op">&lt;</span> current_earliest_datetime</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>      ):</span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a>        current_earliest_datetime <span class="op">=</span> event.event_datetime</span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (</span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a>        current_latest_datetime <span class="kw">is</span> <span class="va">None</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a>        <span class="kw">or</span> event.event_datetime <span class="op">&gt;</span> current_latest_datetime</span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a>      ):</span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a>        current_latest_datetime <span class="op">=</span> event.event_datetime</span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add instance data</span></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a>    data_coverage_list.append({</span>
+<span id="cb4-143"><a href="#cb4-143" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Instance&quot;</span>: instance,</span>
+<span id="cb4-144"><a href="#cb4-144" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Events&quot;</span>: num_events,</span>
+<span id="cb4-145"><a href="#cb4-145" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Oldest Event&quot;</span>: current_earliest_datetime.date().isoformat(),</span>
+<span id="cb4-146"><a href="#cb4-146" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;Newest Event&quot;</span>: current_latest_datetime.date().isoformat(),</span>
+<span id="cb4-147"><a href="#cb4-147" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb4-148"><a href="#cb4-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-149"><a href="#cb4-149" aria-hidden="true" tabindex="-1"></a><span class="co"># To dataframe</span></span>
+<span id="cb4-150"><a href="#cb4-150" aria-hidden="true" tabindex="-1"></a>data_coverage <span class="op">=</span> pd.DataFrame(data_coverage_list)</span>
+<span id="cb4-151"><a href="#cb4-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-152"><a href="#cb4-152" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
+<span id="cb4-153"><a href="#cb4-153" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> <span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb4-154"><a href="#cb4-154" aria-hidden="true" tabindex="-1"></a><span class="st">Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). @tbl-cdp-data-coverage provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</span></span>
+<span id="cb4-155"><a href="#cb4-155" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb4-156"><a href="#cb4-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-157"><a href="#cb4-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb4-158"><a href="#cb4-158" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb4-159"><a href="#cb4-159" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb4-160"><a href="#cb4-160" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb4-161"><a href="#cb4-161" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb4-162"><a href="#cb4-162" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb4-163"><a href="#cb4-163" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb4-164"><a href="#cb4-164" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-165"><a href="#cb4-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb4-166"><a href="#cb4-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-169"><a href="#cb4-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb4-170"><a href="#cb4-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-fold: true</span></span>
+<span id="cb4-171"><a href="#cb4-171" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: &quot;Show code&quot;</span></span>
+<span id="cb4-172"><a href="#cb4-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-cdp-data-coverage</span></span>
+<span id="cb4-173"><a href="#cb4-173" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: Councils in Action Data Coverage</span></span>
+<span id="cb4-174"><a href="#cb4-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-175"><a href="#cb4-175" aria-hidden="true" tabindex="-1"></a><span class="co"># Display table</span></span>
+<span id="cb4-176"><a href="#cb4-176" aria-hidden="true" tabindex="-1"></a>Markdown(data_coverage.to_markdown())</span>
+<span id="cb4-177"><a href="#cb4-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
