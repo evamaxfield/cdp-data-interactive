@@ -36,7 +36,7 @@ Despite this challenge, there are common legal requirements for transparency in 
 Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data @cdp-joss. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as “Councils in Action.”
 
 ::: {.callout-note appearance="simple"}
-Council Data Project data now covers 18 cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.
+Council Data Project data now covers many more cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.
 :::
 
 ## Background
@@ -80,11 +80,94 @@ These two examples illustrate how transcript data from governance deliberations 
 This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.
 :::
 
-Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle, Washington and Portland, Oregon and the county council of King County, Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+<details>
+<summary>
+Original Paper Text
+</summary>
+
+Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle Washington and Portland Oregon and the county council of King County Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+</details>
 
 ```{python}
 #| code-fold: true
 #| code-summary: "Show code"
 
-1+1
+# Markdown rendering
+from IPython.display import Markdown
+
+# Core computation
+from datetime import datetime
+
+from cdp_backend.database import models as db_models
+from cdp_data import CDPInstances
+from cdp_data.utils import connect_to_database
+import numpy as np
+import pandas as pd
+
+# Get all instance infrastructure strings
+ALL_INSTANCES = [
+  getattr(CDPInstances, i)
+  for i in dir(CDPInstances) if "__" not in i
+]
+
+# Get dataset size and dates
+data_coverage_list = []
+for instance in ALL_INSTANCES:
+  connect_to_database(instance)
+
+  # Get all events to calculate size
+  events = list(db_models.Event.collection.fetch())
+  num_events = len(events)
+
+  # Only continue if the instance has data
+  if num_events > 0:
+    # Get earliest event datetime
+    current_earliest_datetime = None
+    current_latest_datetime = None
+    for event in events:
+      if (
+        current_earliest_datetime is None
+        or event.event_datetime < current_earliest_datetime
+      ):
+        current_earliest_datetime = event.event_datetime
+      if (
+        current_latest_datetime is None
+        or event.event_datetime > current_latest_datetime
+      ):
+        current_latest_datetime = event.event_datetime
+    
+    # Add instance data
+    data_coverage_list.append({
+      "Instance": instance,
+      "Events": num_events,
+      "Oldest Event": current_earliest_datetime.date().isoformat(),
+      "Newest Event": current_latest_datetime.date().isoformat(),
+    })
+
+# To dataframe
+data_coverage = pd.DataFrame(data_coverage_list)
+
+# MARKDOWN TEMPLATE
+COVERAGE_PARAGRAPH = """
+Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of `{generation_date}`, the Councils in Action dataset, includes a video file, audio file, and transcript for `{n_meetings}` meetings from `{n_instances}` different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). @tbl-cdp-data-coverage provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.
+"""
+
+# Render paragraph
+Markdown(
+  COVERAGE_PARAGRAPH.format(
+    generation_date=datetime.utcnow().date().isoformat(),
+    n_meetings=data_coverage["Events"].sum(),
+    n_instances=len(data_coverage.index),
+  ).strip()
+)
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show code"
+#| label: tbl-cdp-data-coverage
+#| tbl-cap: Councils in Action Data Coverage
+
+# Display table
+Markdown(data_coverage.to_markdown())
 ```

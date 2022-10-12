@@ -32,3 +32,4 @@ dependencies:
   - xz
   - pip:
     - cdp-data>=0.0.8
+    - tabulate
