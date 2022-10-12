@@ -21,9 +21,17 @@ jobs:
     - name: Set up Quarto
       uses: quarto-dev/quarto-actions/setup@v2
 
-    - name: Build and Publish to GitHub Pages
-      uses: quarto-dev/quarto-actions/publish@v2
+    # Build webpage
+    - name: Build webpage
+      shell: bash -l {0}
+      run: |
+        just build
+        mkdir _build/
+        mv index.html _build/
+        touch _build/.nojekyll
+      
+    # Publish to GH Pages
+    - name: Publish Book
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        target: gh-pages
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        folder: _build/
