@@ -9,6 +9,7 @@ dependencies:
   # R
   - r-base>=4
   - r-essentials>=3
+  - r-jsonlite
   # Extras
   - just
   - _libgcc_mutex

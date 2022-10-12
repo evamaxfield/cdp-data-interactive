@@ -80,10 +80,11 @@ These two examples illustrate how transcript data from governance deliberations 
 This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.
 :::
 
-Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle, Washington and Portland, Oregon and the county council of King County, Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle, Washington and Portland, Oregon and the county council of King County, Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
 
-<!-- ```{python}
-#| echo: false
+```{python}
+#| code-fold: true
+#| code-summary: "Show code"
 
 1+1
-``` -->
+```
