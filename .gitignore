@@ -115,6 +115,8 @@ ENV/
 # Quarto generated
 _build/
 .quarto/
+index.ipynb
+index.md
 
 # Project specific
 cdp-datasets/

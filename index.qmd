@@ -62,9 +62,7 @@ To make CDP data more accessible to the public, and to provide an interface for 
 
 CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.
 
-## Municipal Meeting Data
-
-### Previous Government Meeting Datasets
+### Previous Municipal Meeting Datasets
 
 Municipal meeting data is used across a number of domains of research that are interested in the institutional design and functioning of local governments - from political science and sociology to legal scholarship. In the following section we highlight a study from Einstein et al. which investigated who participates in local meetings and a study from Jacobi and Schweers which investigated how gender, ideology, and seniority affect Supreme Court oral argument. Both studies relied upon utilizing meeting records (video or transcript) for analysis of participant behaviors.
 
@@ -74,7 +72,7 @@ In a similar study which used mixed manual and automated methods of constructing
 
 These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.
 
-### CDP - Councils in Action
+## CDP - Councils in Action
 
 ::: {.callout-note appearance="simple"}
 This section replaces original paper text with auto-generated text to stay up-to-date with the state of the dataset.
