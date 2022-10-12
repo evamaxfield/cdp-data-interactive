@@ -1,0 +1,89 @@
+---
+title: "Councils in Action"
+subtitle: "An exploration of data made available by Council Data Project"
+author: "Eva Maxfield Brown"
+date: "October 11, 2022"
+date-modified: "`r Sys.Date()`"
+
+abstract: "Large scale comparative research into municipal governance is often prohibitively difficult due to a lack of high-quality data. Recent advances in speech-to-text algorithms and natural language processing techniques has made it possible to more easily collect and analyze this type of data. In this paper, we introduce an open-source platform, the [Council Data Project](https://councildataproject.org) (CDP), to curate novel datasets for research into municipal governance. The contribution of this work is two-fold: 1. We demonstrate that CDP, as an infrastructure, can be used to assemble reliable comparative data across municipalities; 2. We provide exploratory analysis to show how CDP data can be used to gain insight into how municipal governments perform over time. We conclude by describing future directions for research on and with CDP such as the development of machine learning models for speaker annotation, outline generation, and named entity recognition to the linking of data for large-scale comparative research."
+
+toc: true
+toc-location: left
+format:
+  html:
+    code-tools: true
+    self-contained: true
+
+reference-location: margin
+citation-location: margin
+fig-cap-location: margin
+bibliography: pape.bib
+csl: nature.csl
+---
+
+## Quarto
+
+This document will explain what [Council Data Project](https://councildataproject.org) (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&T AM22 conference paper [@cdp-asist-am22].
+
+If you want to skip to the data gather, visualization, and plotting code, jump to [#councils-in-action](#councils-in-action).
+
+## Introduction
+
+Federalism, where power devolves to states and municipalities, is a defining feature of US democracy. But, federalism also poses substantial challenges to the study of state and local governments - each state and each city or county in the USA has their own rules and regulations that structure a mode of governance. For this reason, political science research into local government is often referred to as a “black hole” @urban-politics. It can be an extended exercise in data collection to determine the identity of elected officials across the 89,000 local governments in the USA, let alone measure and compare the performance of one system of local governance to another @crowdsourcing-local-data.
+
+Despite this challenge, there are common legal requirements for transparency in state and local government legislatures that can improve the quality, scale, and usefulness of data used to study local governance. Open meeting laws, also called sunshine laws, require that most meetings of state and local governments be open to the public, along with their decisions and records @open-meetings. This means, in theory, recordings of a legislative session, bills and materials supporting the proposal of a bill, as well as voting outcomes are required to be publicly accessible. In practice, access to recordings and voting records is often hampered by closed, proprietary information systems that are difficult to navigate, search, and extract meaningful data for both citizens and researchers alike @gender-matter-leadership.
+
+Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data @cdp-joss. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as “Councils in Action.”
+
+::: {.callout-note appearance="simple"}
+Council Data Project data now covers 18 cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.
+:::
+
+## Background
+
+### Public Interest Technology for Municipal Events
+A number of previous civic technology applications have created valuable and accessible local government data from publicly available information, but none have specifically focused on aggregating transcripts of legislative discussion. In the following section we review four of these applications, and note how they relate to but differ from CDP. [Councilmatic](https://github.com/codeforamerica/councilmatic) was one of the first public interest technology projects to focus on making council information more accessible. Councilmatic is a system for processing and archiving past municipal council meetings and legislative information and tracking upcoming meetings. Councilmatic is entirely open-source and there are now working examples of this application being used in cities throughout the USA, including for Los Angeles, Chicago, New York City, and Oakland [@councilmatic]. However, each instance of Councilmatic, at a city or county level, is entirely separate from each other in their setup and maintenance. This distributed architecture makes it difficult to collaboratively develop new features, and prohibits cross-municipality data aggregation.
+
+[Local Voices Network](https://lvn.org/) (LVN), a project from Cortico AI, provides a powerful platform for generating, visualizing, and searching through transcripts of civic “conversations.” LVN tools are highly targeted at reaching out to communities, facilitating a small-group conversation, and making such conversations easy to digest via machine learning analysis and visualization [@local-voices-network]. Such facilitation of community conversations engineers a discussion about specific topics and places them into a standardized format rather than curating existing data into a standard form. LVN produces novel insight into community sentiment but at the high cost of facilitation and engineering.
+
+[Big Local News](https://github.com/biglocalnews) (BLN), from researchers at Stanford University has created a platform to obtain data, through web-scraping, from municipal councils across the country. Each scraper from BLN collects meeting assets such as documents, presentations, videos, captions, etc.. Further, there is currently no processing of the scraped data (e.g. transcript generation) in order to expand the usage of these documents to include council discussions for analysis.
+
+[Blockparty](https://blockparty.studio) is an emergent civic technology project which generates and analyzes meeting transcripts from New York City community council meetings. Blockparty creates and processes meeting transcripts to extract keywords and other potential highlights, and then publishes both the transcript and a keyword histogram to the web. Blockparty currently only serves New York City and without open-source code we are limited in understanding their deployment and data access mechanisms. Specifically, we do not know how researchers and civic hackers alike might deploy Blockparty for their own municipality, and more importantly, there is no structured open data produced by this project that can be analyzed for research purposes.
+
+Lastly, while many projects are focused on the collection and republishing of municipal meeting data (from documents, videos, and in some cases transcripts), it is rare for a project to address the data collection, aggregation, transformation, and linkage of data together. For example, Councilmatic is the only project from prior examples which additionally stores legislative outcomes and voting records. The storage of such data is a valuable attachment which allows for investigation not only from discussion but additionally against the legislative end result.
+
+### Council Data Project
+
+Council Data Project (CDP) attempts to improve upon state-of-the-art public interest technology projects by providing a low-cost, flexible and scalable open-source solution for generating a large standardized corpora of municipal council meetings. CDP can be deployed in any municipality with minimal configuration by a developer or city IT department. Using a simple Python-based ‘cookie-cutter template’ [@cookiecutter] a developer can configure a new CDP deployment with just a two-line installation process and fully deploy the instance once provided a function to gather events [@cdp-joss]. Once fully deployed, an instance of CDP will collect and process municipal meeting minutes, agendas, voting records, and crucially, the recorded video or audio of each meeting that is archived by a municipality. For every legislative meeting that CDP processes, the system generates a transcript from the provided video using a machine learning model that converts recorded audio to text (aka speech-to-text processing). On a continuous schedule CDP infrastructure then uses this corpus of transcripts to generate and update a keyword based index to enable search of meetings by keyword [@cdp-joss].
+
+To make CDP data more accessible to the public, and to provide an interface for building a deeper, contextual understanding, each CDP infrastructure also publishes a website (see @fig-seattle-events-page). Users of CDP websites can search for municipal meetings using the keyword index and then retrieve the video of a meeting, the sentence time-stamped transcript (for reading and for jumping playback of video to a sentence start point), access the full minutes of the meeting, and view votes that took place during a meeting. Further, because CDP transforms municipal government data into a database specification, CDP also aggregates and publishes aggregate data - such as the entire voting records of city council members, or document timestamps that show when specific actions were taken on a piece of municipal legislation.
+
+![Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)](figs/seattle-events-screen.png){#fig-seattle-events-page}
+
+CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.
+
+## Municipal Meeting Data
+
+### Previous Government Meeting Datasets
+
+Municipal meeting data is used across a number of domains of research that are interested in the institutional design and functioning of local governments - from political science and sociology to legal scholarship. In the following section we highlight a study from Einstein et al. which investigated who participates in local meetings and a study from Jacobi and Schweers which investigated how gender, ideology, and seniority affect Supreme Court oral argument. Both studies relied upon utilizing meeting records (video or transcript) for analysis of participant behaviors.
+
+Einstein et al. provided a comprehensive look into who participates in local government. Specifically, they "[compiled and coded] new data on all citizen participants in planning and zoning board meetings dealing with the construction of multiple housing units in 97 Massachusetts cities and towns.” The researchers then matched, “thousands of individual participants to the Massachusetts voter file to explore who participates in local political meetings" [@einstein-local-gov-participates]. This paper utilized text annotation and topic and sentiment encoding to first identify participants, and then determine what each participant did and did not support in regards to specific planning and zoning discussions. In their study, data collection and coding were done in a combined manual and automated process. Public comment coding and annotation was completed by identifying participants' names and addresses when they spoke. Once the data had been manually collected, Einstein et al. used probabilistic name and address matching with Massachusetts voting records in order to match each participant to their voting record details and then manually verified matches.
+
+In a similar study which used mixed manual and automated methods of constructing a dataset for federal governance research, Jacobi and Schweers attempted to measure the effect of gender, ideology, and seniority at Supreme Court oral arguments. Their work processed hundreds of transcripts to search and record interruptions between the legal advocates and the Supreme Court Justices (and between Justices) [@justice-interrupted]. Jacobi and Schweers work was made possible by two separate databases: an existing publicly available database of specifically Roberts Court oral arguments and a second database that was manually assembled to store in-depth analysis of interruption behaviors.
+
+These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.
+
+### CDP - Councils in Action
+
+::: {.callout-note appearance="simple"}
+This section replaced the original paper text with auto-generated text to stay up-to-date with the state of the dataset.
+:::
+
+Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle, Washington and Portland, Oregon and the county council of King County, Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+
+<!-- ```{python}
+#| echo: false
+
+1+1
+``` -->
