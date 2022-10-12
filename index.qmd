@@ -91,7 +91,6 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 #| code-summary: "Show Code for Generated Paragraph and Table"
 #| label: tbl-cdp-data-coverage
 #| tbl-cap: Councils in Action Data Coverage
-#| warning: false
 
 # Markdown rendering
 from IPython.display import Markdown
