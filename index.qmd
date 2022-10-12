@@ -23,9 +23,9 @@ csl: support/nature.csl
 
 ## Quarto
 
-This document will explain what [Council Data Project](https://councildataproject.org) (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an updated and interactive version our ASIS&T AM22 conference paper [@cdp-asist-am22].
+This document will explain what [Council Data Project](https://councildataproject.org) (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an slightly modified, up-to-date, interactive version our ASIS&T AM22 conference paper [@cdp-asist-am22].
 
-If you want to skip to the data gather, visualization, and plotting code, jump to [#councils-in-action](#councils-in-action).
+If you want to skip to the data gather, visualization, and plotting code, jump to [#the-councils-in-action-dataset](#the-councils-in-action-dataset).
 
 ## Introduction
 
@@ -72,7 +72,7 @@ In a similar study which used mixed manual and automated methods of constructing
 
 These two examples illustrate how transcript data from governance deliberations can be used to study an enormous range of consequential topics - from gendered speech patterns, to representative democratic outcomes. While these results are individually impactful, the ability to build and expand upon this research is limited because of expensive and time consuming processes required for manually collecting, processing, and structuring data for analysis. In the following sections we describe the content and structure of data made available by CDP instances and how we can make analyses of municipal governance both accessible and reproducible for research. In particular, we detail the construction of a dataset, Councils in Action, and describe how it was prepared as a corpus of machine readable transcripts ready for analysis. We then perform exploratory analysis to demonstrate the value of this corpus for municipal governance research.
 
-## CDP - Councils in Action Dataset
+## The Councils in Action Dataset
 
 ::: {.callout-note appearance="simple"}
 This section replaces original paper text with auto-generated text to stay up-to-date with the state of the dataset.
@@ -88,7 +88,7 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 
 ```{python}
 #| code-fold: true
-#| code-summary: "Show code for generated paragraph and table"
+#| code-summary: "Show Code for Generated Paragraph and Table"
 #| label: tbl-cdp-data-coverage
 #| tbl-cap: Councils in Action Data Coverage
 
@@ -149,14 +149,11 @@ data_coverage = pd.DataFrame(data_coverage_list)
 
 # MARKDOWN TEMPLATE
 COVERAGE_PARAGRAPH = (
-  "Using Council Data Project infrastructures we assemble longitudinal data from "
-  "across multiple municipal councils to ease manual curation for researchers. "
   "As of `{generation_date}`, the Councils in Action dataset, includes a video file, "
   "audio file, and transcript for `{n_meetings}` meetings from `{n_instances}` "
-  "different municipal councils. Many CDP instances also include the minutes item "
-  "details for each meeting (legislative items, votes, and attached documents). "
-  "@tbl-cdp-data-coverage provides specific details as to the number of meetings "
-  "from each municipal council and their oldest and newest event dates."
+  "different municipal councils. @tbl-cdp-data-coverage provides specific details "
+  "as to the number of meetings from each municipal council and their "
+  "oldest and newest event dates."
   "\n\n{table}"
 )
 
