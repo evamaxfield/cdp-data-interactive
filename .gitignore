@@ -113,10 +113,9 @@ ENV/
 .vscode
 
 # Quarto generated
-pape_files/
-pape.html
-build/
-index.html
+_build/
+.quarto/
 
 # Project specific
 cdp-datasets/
+/.quarto/

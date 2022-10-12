@@ -17,8 +17,8 @@ format:
 reference-location: margin
 citation-location: margin
 fig-cap-location: margin
-bibliography: pape.bib
-csl: nature.csl
+bibliography: support/main.bib
+csl: support/nature.csl
 ---
 
 ## Quarto
@@ -58,7 +58,7 @@ Council Data Project (CDP) attempts to improve upon state-of-the-art public inte
 
 To make CDP data more accessible to the public, and to provide an interface for building a deeper, contextual understanding, each CDP infrastructure also publishes a website (see @fig-seattle-events-page). Users of CDP websites can search for municipal meetings using the keyword index and then retrieve the video of a meeting, the sentence time-stamped transcript (for reading and for jumping playback of video to a sentence start point), access the full minutes of the meeting, and view votes that took place during a meeting. Further, because CDP transforms municipal government data into a database specification, CDP also aggregates and publishes aggregate data - such as the entire voting records of city council members, or document timestamps that show when specific actions were taken on a piece of municipal legislation.
 
-![Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)](figs/seattle-events-screen.png){#fig-seattle-events-page}
+![Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)](support/figs/seattle-events-screen.png){#fig-seattle-events-page}
 
 CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.
 
@@ -90,7 +90,9 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 
 ```{python}
 #| code-fold: true
-#| code-summary: "Show code"
+#| code-summary: "Show code for generated paragraph and table"
+#| label: tbl-cdp-data-coverage
+#| tbl-cap: Councils in Action Data Coverage
 
 # Markdown rendering
 from IPython.display import Markdown
@@ -148,9 +150,17 @@ for instance in ALL_INSTANCES:
 data_coverage = pd.DataFrame(data_coverage_list)
 
 # MARKDOWN TEMPLATE
-COVERAGE_PARAGRAPH = """
-Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. As of `{generation_date}`, the Councils in Action dataset, includes a video file, audio file, and transcript for `{n_meetings}` meetings from `{n_instances}` different municipal councils. Many CDP instances also include the minutes item details for each meeting (legislative items, votes, and attached documents). @tbl-cdp-data-coverage provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.
-"""
+COVERAGE_PARAGRAPH = (
+  "Using Council Data Project infrastructures we assemble longitudinal data from "
+  "across multiple municipal councils to ease manual curation for researchers. "
+  "As of `{generation_date}`, the Councils in Action dataset, includes a video file, "
+  "audio file, and transcript for `{n_meetings}` meetings from `{n_instances}` "
+  "different municipal councils. Many CDP instances also include the minutes item "
+  "details for each meeting (legislative items, votes, and attached documents). "
+  "@tbl-cdp-data-coverage provides specific details as to the number of meetings "
+  "from each municipal council and their oldest and newest event dates."
+  "\n\n{table}"
+)
 
 # Render paragraph
 Markdown(
@@ -158,16 +168,7 @@ Markdown(
     generation_date=datetime.utcnow().date().isoformat(),
     n_meetings=data_coverage["Events"].sum(),
     n_instances=len(data_coverage.index),
+    table=data_coverage.to_markdown()
   ).strip()
 )
-```
-
-```{python}
-#| code-fold: true
-#| code-summary: "Show code"
-#| label: tbl-cdp-data-coverage
-#| tbl-cap: Councils in Action Data Coverage
-
-# Display table
-Markdown(data_coverage.to_markdown())
 ```
