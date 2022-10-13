@@ -149,11 +149,10 @@ data_coverage = pd.DataFrame(data_coverage_list)
 
 # MARKDOWN TEMPLATE
 COVERAGE_PARAGRAPH = (
-  "As of `{generation_date}`, the Councils in Action dataset, includes a video file, "
-  "audio file, and transcript for `{n_meetings}` meetings from `{n_instances}` "
-  "different municipal councils. @tbl-cdp-data-coverage provides specific details "
-  "as to the number of meetings from each municipal council and their "
-  "oldest and newest event dates."
+  "As of `{generation_date}`, the Councils in Action dataset, includes data for "
+  "`{n_meetings}` meetings from across `{n_instances}` different municipal councils. "
+  "@tbl-cdp-data-coverage provides specific details about the number of meetings, "
+  "and the oldest and newest event dates for each municipal council."
   "\n\n{table}"
 )
 
