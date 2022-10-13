@@ -4204,26 +4204,25 @@ Using Council Data Project infrastructures we assemble longitudinal data from ac
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> (</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. @tbl-cdp-data-coverage provides specific details &quot;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;as to the number of meetings from each municipal council and their &quot;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;oldest and newest event dates.&quot;</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes data for &quot;</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;`</span><span class="sc">{n_meetings}</span><span class="st">` meetings from across `</span><span class="sc">{n_instances}</span><span class="st">` different municipal councils. &quot;</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;@tbl-cdp-data-coverage provides specific details about the number of meetings, &quot;</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;and the oldest and newest event dates for each municipal council.&quot;</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<p>As of <code>2022-10-12</code>, the Councils in Action dataset, includes a video file, audio file, and transcript for <code>2339</code> meetings from <code>17</code> different municipal councils. <a href="#tbl-cdp-data-coverage">Table 1</a> provides specific details as to the number of meetings from each municipal council and their oldest and newest event dates.</p>
+<p>As of <code>2022-10-13</code>, the Councils in Action dataset, includes data for <code>2339</code> meetings from across <code>17</code> different municipal councils. <a href="#tbl-cdp-data-coverage">Table 1</a> provides specific details about the number of meetings, and the oldest and newest event dates for each municipal council.</p>
 <div id="tbl-cdp-data-coverage" class="anchored">
 <table class="table table-sm table-striped">
 <caption>Table 1: Councils in Action Data Coverage</caption>
@@ -4676,24 +4675,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="co"># MARKDOWN TEMPLATE</span></span>
 <span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>COVERAGE_PARAGRAPH <span class="op">=</span> (</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes a video file, &quot;</span></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;audio file, and transcript for `</span><span class="sc">{n_meetings}</span><span class="st">` meetings from `</span><span class="sc">{n_instances}</span><span class="st">` &quot;</span></span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;different municipal councils. @tbl-cdp-data-coverage provides specific details &quot;</span></span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;as to the number of meetings from each municipal council and their &quot;</span></span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;oldest and newest event dates.&quot;</span></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;As of `</span><span class="sc">{generation_date}</span><span class="st">`, the Councils in Action dataset, includes data for &quot;</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;`</span><span class="sc">{n_meetings}</span><span class="st">` meetings from across `</span><span class="sc">{n_instances}</span><span class="st">` different municipal councils. &quot;</span></span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;@tbl-cdp-data-coverage provides specific details about the number of meetings, &quot;</span></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;and the oldest and newest event dates for each municipal council.&quot;</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;</span><span class="ch">\n\n</span><span class="sc">{table}</span><span class="st">&quot;</span></span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="co"># Render paragraph</span></span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>Markdown(</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>  COVERAGE_PARAGRAPH.<span class="bu">format</span>(</span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>    generation_date<span class="op">=</span>datetime.utcnow().date().isoformat(),</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>    n_meetings<span class="op">=</span>data_coverage[<span class="st">&quot;Events&quot;</span>].<span class="bu">sum</span>(),</span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    n_instances<span class="op">=</span><span class="bu">len</span>(data_coverage.index),</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    table<span class="op">=</span>data_coverage.to_markdown()</span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>  ).strip()</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
