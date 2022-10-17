@@ -52,7 +52,7 @@ A number of previous civic technology applications have created valuable and acc
 
 Lastly, while many projects are focused on the collection and republishing of municipal meeting data (from documents, videos, and in some cases transcripts), it is rare for a project to address the data collection, aggregation, transformation, and linkage of data together. For example, Councilmatic is the only project from prior examples which additionally stores legislative outcomes and voting records. The storage of such data is a valuable attachment which allows for investigation not only from discussion but additionally against the legislative end result.
 
-### Council Data Project
+### Council Data Project {#sec-cdp}
 
 Council Data Project (CDP) attempts to improve upon state-of-the-art public interest technology projects by providing a low-cost, flexible and scalable open-source solution for generating a large standardized corpora of municipal council meetings. CDP can be deployed in any municipality with minimal configuration by a developer or city IT department. Using a simple Python-based ‘cookie-cutter template’ [@cookiecutter] a developer can configure a new CDP deployment with just a two-line installation process and fully deploy the instance once provided a function to gather events [@cdp-joss]. Once fully deployed, an instance of CDP will collect and process municipal meeting minutes, agendas, voting records, and crucially, the recorded video or audio of each meeting that is archived by a municipality. For every legislative meeting that CDP processes, the system generates a transcript from the provided video using a machine learning model that converts recorded audio to text (aka speech-to-text processing). On a continuous schedule CDP infrastructure then uses this corpus of transcripts to generate and update a keyword based index to enable search of meetings by keyword [@cdp-joss].
 
@@ -84,13 +84,18 @@ Original Paper Text
 </summary>
 
 Using Council Data Project infrastructures we assemble longitudinal data from across multiple municipal councils to ease manual curation for researchers. The proof-of-concept dataset, Councils in Action, is a corpus of over 350 meetings of the city councils of Seattle Washington and Portland Oregon and the county council of King County Washington. Each meeting in our dataset includes a video file, an audio file, a transcript, and the full meeting minutes (legislative items, votes, and attached documents). Table 1 provides specific details as to the number of meetings from each municipal council and their first and last event dates.
+
+| Instance                 | Events | First Event | Last Event |
+|:-------------------------|-------:|:------------|:-----------|
+| cdp-seattle-21723dcf     | 256    | 2021-01-04  | 2022-03-29 |
+| cdp-king-county-b656c71b | 72     | 2021-10-05  | 2022-03-30 |
+| cdp-portland-d2bbda97    | 32     | 2021-07-07  | 2022-03-30 |
+
 </details>
 
 ```{python}
 #| code-fold: true
-#| code-summary: "Show Code for Generated Paragraph and Table"
-#| label: tbl-cdp-data-coverage
-#| tbl-cap: Councils in Action Data Coverage
+#| code-summary: "Show Code for Generated Paragraph"
 
 # Markdown rendering
 from IPython.display import Markdown
@@ -146,6 +151,7 @@ for instance in ALL_INSTANCES:
 
 # To dataframe
 data_coverage = pd.DataFrame(data_coverage_list)
+data_coverage = data_coverage.sort_values(by=["Events"], ascending=False)
 
 # MARKDOWN TEMPLATE
 COVERAGE_PARAGRAPH = (
@@ -153,7 +159,6 @@ COVERAGE_PARAGRAPH = (
   "`{n_meetings}` meetings from across `{n_instances}` different municipal councils. "
   "@tbl-cdp-data-coverage provides specific details about the number of meetings, "
   "and the oldest and newest event dates for each municipal council."
-  "\n\n{table}"
 )
 
 # Render paragraph
@@ -162,7 +167,72 @@ Markdown(
     generation_date=datetime.utcnow().date().isoformat(),
     n_meetings=data_coverage["Events"].sum(),
     n_instances=len(data_coverage.index),
-    table=data_coverage.to_markdown()
   ).strip()
 )
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Rendering Table"
+#| label: tbl-cdp-data-coverage
+#| tbl-cap: Councils in Action Data Coverage
+#| tbl-cap-location: margin
+
+# Import even more base firestore client
+from google.auth.credentials import AnonymousCredentials
+from google.cloud.firestore import Client
+
+# Import itables and make interactive
+from itables import show
+import itables.options as table_opts
+table_opts.lengthMenu = [25, 50, 100]
+
+# Wrap all instances with links to the website
+def _wrap_infra_slug_in_website_link(infra_slug: str) -> str:
+  # Connect
+  db_client = Client(
+    project=infra_slug,
+    credentials=AnonymousCredentials(),
+  )
+  
+  # Get metadata
+  instance_metadata = db_client.document("metadata/configuration").get().to_dict()
+  instance_webpage = instance_metadata["hosting_web_app_address"]
+
+  # Wrap in markdown
+  return f'<a href="{instance_webpage}">{infra_slug}</a>'
+
+render_ready_data_coverage = data_coverage.copy(deep=True)
+render_ready_data_coverage["Instance"] = render_ready_data_coverage["Instance"].apply(_wrap_infra_slug_in_website_link)
+render_ready_data_coverage = render_ready_data_coverage.set_index("Instance", drop=True)
+
+show(render_ready_data_coverage)
+```
+
+::: {.callout-note appearance="simple"}
+@tbl-cdp-data-coverage is interactive. Try sorting and searching.
+:::
+
+As described in @sec-cdp, each CDP instance has a website to search, discover, and link data together for a single event. To serve researchers, we further make this dataset available via Python API and ZIP archive download. We provide the `cdp-data` Python library specifically to access, download, cache, and analyze the Councils in Action dataset. For full documentation of all functionality available in the cdp-data library please see the provided package documentation: [https://councildataproject.org/cdp-data/](https://councildataproject.org/cdp-data/). For lower-level, direct database access, we provide the Python library `cdp-backend`. More information on lower level access to each instance is made available on each CDP deployment’s repository README (i.e. [https://github.com/CouncilDataProject/seattle](https://github.com/CouncilDataProject/seattle)) and extensive documentation as to the CDP database schema is made available via the cdp-backend package documentation: [https://councildataproject.org/cdp-backend/](https://councildataproject.org/cdp-backend/).
+
+The flexibility in data collection afforded by CDP’s distributed instance deployment model allows the dataset to rapidly scale both vertically (in the number of meetings for any single council) and horizontally (as more CDP deployments are created). Therefore, as more CDP instances are created, the generated Councils in Action dataset removes barriers to research that have previously been hindered by time-consuming manual data collection and analysis.
+
+## Exploratory Data Analysis
+
+In the following section we use the Councils in Action dataset to explore and examine trends in council meetings, including public comments, over time. Our exploratory analysis focuses on keywords or N-grams. N-gram viewers have been commonly created to visualize trends in the usage of specific n-grams in large literature corpora over time @google-ngrams. Such approaches are often considered a way to ‘distantly read’ a corpus of texts @digital-libraries-explorer. Distant readings of council meetings can help understand broad trends in the way that a topic increases or decreases in importance during legislative processes. For example, if a topic decreases in frequency then, broadly, we can interpret this topic as being less important in the municipal government’s legislative agenda.
+
+<details>
+<summary>
+Original Paper Text
+</summary>
+
+For the Councils in Action dataset we apply the use of an n-gram visualization in order to demonstrate how topic trends evolve over time. First we use longitudinal data from the transcripts of Seattle City Council meetings to show the usage of specific n-grams as a percent of total n-grams used for each meeting during this time period. Figure 2 shows the usage of n-grams stemming from “police”, “housing”, “union”, and “homelessness” from January 1, 2021 to April 1, 2022 during meetings of the Seattle City Council.
+
+</details>
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for N-Gram Viewer"
+
+
 ```
