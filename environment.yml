@@ -34,3 +34,4 @@ dependencies:
     - cdp-data>=0.0.8
     - tabulate
     - ipywidgets
+    - itables
