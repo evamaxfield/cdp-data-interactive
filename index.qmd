@@ -493,6 +493,50 @@ joined_paragraph_parts = "\n\n".join([SEATTLE_NGRAMS_STATS_INTRO, joined_gram_st
 Markdown(joined_paragraph_parts.strip())
 ```
 
+Further, @fig-multi-infra-ngram-viewer compares daily keyword usage across municipal councils.
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Getting Multiple Instance Data"
+#| warning: false
+
+from cdp_data import CDPInstances, keywords
+
+# Get data
+selected_munis = keywords.compute_ngram_usage_history(
+    infrastructure_slug=[
+      CDPInstances.Seattle,
+      CDPInstances.Portland,
+      CDPInstances.Oakland,
+    ],
+)
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Plotting Multiple Instance Data"
+#| warning: false
+#| label: fig-multi-infra-ngram-viewer
+#| fig-cap: N-gram usage over time from selected municipal councils. The x-axis represents individual days. The y-axis represents the usage of each n-gram – the percent of the number of times the specific n-gram was used for the day over the total number of n-grams used during the day.
+#| fig-cap-location: margin
+
+from cdp_data import plots
+plots.set_cdp_plotting_styles()
+
+grid = plots.plot_ngram_usage_histories(
+    ["police", "housing"],
+    selected_munis,
+    lmplot_kws=dict(  # extra plotting params
+        col="ngram",
+        row="infrastructure",
+        hue="ngram",
+        scatter_kws={"alpha": 0.2},
+        aspect=1.6,
+    ),
+)
+grid.fig.set_size_inches(6.8, 2.8 * 3)
+```
+
 ## Conclusion
 
 In this paper, we have argued that the deployment of Council Data Project infrastructures to cover municipal councils is a solution to not only increasing access to data, but standardizing this data for eased analysis. We have demonstrated that, with the proof-of-concept Councils in Action dataset, data produced by CDP infrastructures can be easily processed and analyzed to observe shared and unique discussion trends across municipal councils. As the number of CDP instances increases, the Councils in Action dataset can be used for even more rich and varied analyses. For example, in their comprehensive study detailing who participates in local government meetings, Einstein et al., concluded that while there may be suggestive evidence that the trends they found hold for other states, the largest limitation of their work is that the data comes from a single state @einstein-local-gov-participates.
