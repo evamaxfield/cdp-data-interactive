@@ -31,7 +31,6 @@ dependencies:
   - tzdata
   - xz
   - pip:
-    - cdp-data>=0.0.8
+    - cdp-data[plot]>=0.0.8
     - tabulate
-    - ipywidgets
     - itables

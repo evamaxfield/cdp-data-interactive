@@ -12,14 +12,28 @@ toc-location: left
 format:
   html:
     code-tools: true
-    self-contained: true
+    standalone: true
+    embed-resources: true
 
 reference-location: margin
 citation-location: margin
-fig-cap-location: margin
 bibliography: support/main.bib
 csl: support/nature.csl
 ---
+
+```{python}
+#| echo: false
+#| output: false
+
+# BLOCK ALL TQDM OUTPUT
+import tqdm
+
+def tqdm_replacement(iterable_object,*args,**kwargs):
+    return iterable_object
+  
+tqdm_copy = tqdm.tqdm # store it if you want to use it later
+tqdm.tqdm = tqdm_replacement
+```
 
 ## Quarto
 
@@ -29,11 +43,11 @@ If you want to skip to the data gather, visualization, and plotting code, jump t
 
 ## Introduction
 
-Federalism, where power devolves to states and municipalities, is a defining feature of US democracy. But, federalism also poses substantial challenges to the study of state and local governments - each state and each city or county in the USA has their own rules and regulations that structure a mode of governance. For this reason, political science research into local government is often referred to as a “black hole” @urban-politics. It can be an extended exercise in data collection to determine the identity of elected officials across the 89,000 local governments in the USA, let alone measure and compare the performance of one system of local governance to another @crowdsourcing-local-data.
+Federalism, where power devolves to states and municipalities, is a defining feature of US democracy. But, federalism also poses substantial challenges to the study of state and local governments - each state and each city or county in the USA has their own rules and regulations that structure a mode of governance. For this reason, political science research into local government is often referred to as a "black hole" @urban-politics. It can be an extended exercise in data collection to determine the identity of elected officials across the 89,000 local governments in the USA, let alone measure and compare the performance of one system of local governance to another @crowdsourcing-local-data.
 
 Despite this challenge, there are common legal requirements for transparency in state and local government legislatures that can improve the quality, scale, and usefulness of data used to study local governance. Open meeting laws, also called sunshine laws, require that most meetings of state and local governments be open to the public, along with their decisions and records @open-meetings. This means, in theory, recordings of a legislative session, bills and materials supporting the proposal of a bill, as well as voting outcomes are required to be publicly accessible. In practice, access to recordings and voting records is often hampered by closed, proprietary information systems that are difficult to navigate, search, and extract meaningful data for both citizens and researchers alike @gender-matter-leadership.
 
-Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data @cdp-joss. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as “Councils in Action.”
+Over the last two years, the Council Data Project (CDP) has developed an open-source software platform that significantly improves access and engagement with local government data @cdp-joss. In the following paper we provide a brief background of CDP, and how this open-source platform enables large-scale, longitudinal, comparative research into municipal governance. In doing so, we position our work amongst other large-scale, public interest technology projects, and describe how CDP uniquely enables the assembly of comparative data for analysis. We then use CDP to assemble a longitudinal dataset from three different municipal councils (Seattle City Council, Portland City Council, and King County Council). We use this dataset to perform exploratory data analysis through the development of an N-gram plotting tool. Finally, we conclude by describing our own future work and the future work made possible by CDP and a growing data collection that we refer to as "Councils in Action."
 
 ::: {.callout-note appearance="simple"}
 Council Data Project data now covers many more cities and counties. As this is a generated document, we will not limit ourselves to just examining Seattle City Council, Portland City Council, and King County Council. Rather, all plots and analyses will be updated each week with the latest data as we re-generate this arcticle.
@@ -44,7 +58,7 @@ Council Data Project data now covers many more cities and counties. As this is a
 ### Public Interest Technology for Municipal Events
 A number of previous civic technology applications have created valuable and accessible local government data from publicly available information, but none have specifically focused on aggregating transcripts of legislative discussion. In the following section we review four of these applications, and note how they relate to but differ from CDP. [Councilmatic](https://github.com/codeforamerica/councilmatic) was one of the first public interest technology projects to focus on making council information more accessible. Councilmatic is a system for processing and archiving past municipal council meetings and legislative information and tracking upcoming meetings. Councilmatic is entirely open-source and there are now working examples of this application being used in cities throughout the USA, including for Los Angeles, Chicago, New York City, and Oakland [@councilmatic]. However, each instance of Councilmatic, at a city or county level, is entirely separate from each other in their setup and maintenance. This distributed architecture makes it difficult to collaboratively develop new features, and prohibits cross-municipality data aggregation.
 
-[Local Voices Network](https://lvn.org/) (LVN), a project from Cortico AI, provides a powerful platform for generating, visualizing, and searching through transcripts of civic “conversations.” LVN tools are highly targeted at reaching out to communities, facilitating a small-group conversation, and making such conversations easy to digest via machine learning analysis and visualization [@local-voices-network]. Such facilitation of community conversations engineers a discussion about specific topics and places them into a standardized format rather than curating existing data into a standard form. LVN produces novel insight into community sentiment but at the high cost of facilitation and engineering.
+[Local Voices Network](https://lvn.org/) (LVN), a project from Cortico AI, provides a powerful platform for generating, visualizing, and searching through transcripts of civic "conversations." LVN tools are highly targeted at reaching out to communities, facilitating a small-group conversation, and making such conversations easy to digest via machine learning analysis and visualization [@local-voices-network]. Such facilitation of community conversations engineers a discussion about specific topics and places them into a standardized format rather than curating existing data into a standard form. LVN produces novel insight into community sentiment but at the high cost of facilitation and engineering.
 
 [Big Local News](https://github.com/biglocalnews) (BLN), from researchers at Stanford University has created a platform to obtain data, through web-scraping, from municipal councils across the country. Each scraper from BLN collects meeting assets such as documents, presentations, videos, captions, etc.. Further, there is currently no processing of the scraped data (e.g. transcript generation) in order to expand the usage of these documents to include council discussions for analysis.
 
@@ -58,15 +72,15 @@ Council Data Project (CDP) attempts to improve upon state-of-the-art public inte
 
 To make CDP data more accessible to the public, and to provide an interface for building a deeper, contextual understanding, each CDP infrastructure also publishes a website (see @fig-seattle-events-page). Users of CDP websites can search for municipal meetings using the keyword index and then retrieve the video of a meeting, the sentence time-stamped transcript (for reading and for jumping playback of video to a sentence start point), access the full minutes of the meeting, and view votes that took place during a meeting. Further, because CDP transforms municipal government data into a database specification, CDP also aggregates and publishes aggregate data - such as the entire voting records of city council members, or document timestamps that show when specific actions were taken on a piece of municipal legislation.
 
-![Event search results for query: “defund the police” using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)](support/figs/seattle-events-screen.png){#fig-seattle-events-page}
+![Event search results for query: "defund the police" using the Seattle City Council CDP instance website. The search page includes event ‘cards’ which contain a thumbnail from the meeting video, the meeting date, the meeting committee name, a snippet from the meeting transcript that contains and highlights one or more of the keyword search terms which were found in the transcript, and the meeting keywords. Above the event cards, are filters for the returned query for filtering by committee and date. Additionally there are options for sorting the returned results. The Seattle CDP instance website is available at: [https://councildataproject.org/seattle/](https://councildataproject.org/seattle/)](support/figs/seattle-events-screen.png){#fig-seattle-events-page fig-cap-location=margin}
 
-CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. “Full Council”, “Transportation Committee”, etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.
+CDP imposes minimal requirements as to the level of basic information that must be collected for a municipal event to be identified, accessed, and processed. At a bare minimum, for CDP infrastructures to process and store an event, the system must be given a URL to a video of the meeting, the date of the meeting, and the name of the meeting committee (i.e. "Full Council", "Transportation Committee", etc.). This allows CDP instances to be deployed for less resource-available councils (i.e. school boards, neighborhood zoning boards, etc.) while still producing a standardized transcript and access mechanism to both view and download the data for further exploration and analysis. Data ingestion can be customized for each CDP deployment, but the core processing pipelines, infrastructure configuration, and web application are all shared across any city that deploys CDP. This allows for a much easier and larger collaborative effort between developers and open-source software contributors. In the following section, we detail previous text-as-data datasets from government sources that have been constructed and how such CDP deployments can be utilized to compile a large corpus of municipal meeting transcripts for analysis.
 
 ### Previous Municipal Meeting Datasets
 
 Municipal meeting data is used across a number of domains of research that are interested in the institutional design and functioning of local governments - from political science and sociology to legal scholarship. In the following section we highlight a study from Einstein et al. which investigated who participates in local meetings and a study from Jacobi and Schweers which investigated how gender, ideology, and seniority affect Supreme Court oral argument. Both studies relied upon utilizing meeting records (video or transcript) for analysis of participant behaviors.
 
-Einstein et al. provided a comprehensive look into who participates in local government. Specifically, they "[compiled and coded] new data on all citizen participants in planning and zoning board meetings dealing with the construction of multiple housing units in 97 Massachusetts cities and towns.” The researchers then matched, “thousands of individual participants to the Massachusetts voter file to explore who participates in local political meetings" [@einstein-local-gov-participates]. This paper utilized text annotation and topic and sentiment encoding to first identify participants, and then determine what each participant did and did not support in regards to specific planning and zoning discussions. In their study, data collection and coding were done in a combined manual and automated process. Public comment coding and annotation was completed by identifying participants' names and addresses when they spoke. Once the data had been manually collected, Einstein et al. used probabilistic name and address matching with Massachusetts voting records in order to match each participant to their voting record details and then manually verified matches.
+Einstein et al. provided a comprehensive look into who participates in local government. Specifically, they "[compiled and coded] new data on all citizen participants in planning and zoning board meetings dealing with the construction of multiple housing units in 97 Massachusetts cities and towns." The researchers then matched, "thousands of individual participants to the Massachusetts voter file to explore who participates in local political meetings" [@einstein-local-gov-participates]. This paper utilized text annotation and topic and sentiment encoding to first identify participants, and then determine what each participant did and did not support in regards to specific planning and zoning discussions. In their study, data collection and coding were done in a combined manual and automated process. Public comment coding and annotation was completed by identifying participants' names and addresses when they spoke. Once the data had been manually collected, Einstein et al. used probabilistic name and address matching with Massachusetts voting records in order to match each participant to their voting record details and then manually verified matches.
 
 In a similar study which used mixed manual and automated methods of constructing a dataset for federal governance research, Jacobi and Schweers attempted to measure the effect of gender, ideology, and seniority at Supreme Court oral arguments. Their work processed hundreds of transcripts to search and record interruptions between the legal advocates and the Supreme Court Justices (and between Justices) [@justice-interrupted]. Jacobi and Schweers work was made possible by two separate databases: an existing publicly available database of specifically Roberts Court oral arguments and a second database that was manually assembled to store in-depth analysis of interruption behaviors.
 
@@ -203,13 +217,15 @@ def _wrap_infra_slug_in_website_link(infra_slug: str) -> str:
   return f'<a href="{instance_webpage}">{infra_slug}</a>'
 
 render_ready_data_coverage = data_coverage.copy(deep=True)
-render_ready_data_coverage["Instance"] = render_ready_data_coverage["Instance"].apply(_wrap_infra_slug_in_website_link)
+render_ready_data_coverage["Instance"] = render_ready_data_coverage["Instance"].apply(
+  _wrap_infra_slug_in_website_link
+)
 render_ready_data_coverage = render_ready_data_coverage.set_index("Instance", drop=True)
 
 show(render_ready_data_coverage)
 ```
 
-::: {.callout-note appearance="simple"}
+::: {.callout-tip appearance="simple"}
 @tbl-cdp-data-coverage is interactive. Try sorting and searching.
 :::
 
@@ -226,13 +242,263 @@ In the following section we use the Councils in Action dataset to explore and ex
 Original Paper Text
 </summary>
 
-For the Councils in Action dataset we apply the use of an n-gram visualization in order to demonstrate how topic trends evolve over time. First we use longitudinal data from the transcripts of Seattle City Council meetings to show the usage of specific n-grams as a percent of total n-grams used for each meeting during this time period. Figure 2 shows the usage of n-grams stemming from “police”, “housing”, “union”, and “homelessness” from January 1, 2021 to April 1, 2022 during meetings of the Seattle City Council.
+For the Councils in Action dataset we apply the use of an n-gram visualization in order to demonstrate how topic trends evolve over time. First we use longitudinal data from the transcripts of Seattle City Council meetings to show the usage of specific n-grams as a percent of total n-grams used for each meeting during this time period. @fig-original-paper-seattle-ngram-viewer shows the usage of n-grams stemming from "police", "housing", "union", and "homelessness" from January 1, 2021 to April 1, 2022 during meetings of the Seattle City Council.
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Pulling Original N-Gram Viewer Data"
+#| warning: false
+
+# Import keywords utilities
+from cdp_data import keywords
+
+# Computation
+ORIGINAL_PAPER_PLOT_NGRAMS = [
+    "police",
+    "housing",
+    "union",
+    "homelessness",
+]
+
+original_paper_seattle_ngram_usage = keywords.compute_ngram_usage_history(
+    infrastructure_slug=CDPInstances.Seattle,
+    ngram_size=1,  # generate unigrams
+    strict=False,  # stem grams
+    start_datetime="2021-01-01",
+    end_datetime="2022-04-01",
+)
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Original N-Gram Viewer"
+#| warning: false
+#| label: fig-original-paper-seattle-ngram-viewer
+#| fig-cap: N-gram usage over time for Seattle City Council meetings from January 1, 2021 to April 1, 2022. The selected n-grams are "polic" (the stem of police, policing, etc.), "hous" (the stem of house, housing, etc.), "union", and "homeless". The y-axis represents the usage of each n-gram – the percent of the number of times the specific n-gram was used for the day over the total number of n-grams used during the day.
+
+from cdp_data import plots
+
+grid = plots.plot_ngram_usage_histories(
+    ngram=ORIGINAL_PAPER_PLOT_NGRAMS,
+    gram_usage=original_paper_seattle_ngram_usage,
+    strict=False,  # stem provided grams
+    lmplot_kws=dict(  # extra plotting params
+        col="ngram",
+        hue="ngram",
+        col_wrap=2,
+        scatter_kws={"alpha": 0.2},
+        aspect=1.6,
+    ),
+)
+grid.fig.set_size_inches(6.8, 4.857)
+```
 
 </details>
 
 ```{python}
 #| code-fold: true
-#| code-summary: "Show Code for N-Gram Viewer"
+#| code-summary: "Show Code for Generating Paragraph"
+#| warning: false
 
+from cdp_data import keywords
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
+INVESTIGATION_NGRAMS = [
+  "police",
+  "housing",
+  "union",
+  "homelessness",
+]
+
+# Get data
+seattle_ngram_usage = keywords.compute_ngram_usage_history(
+    infrastructure_slug=CDPInstances.Seattle,
+)
+
+# Find earliest and latest datetimes
+earliest_dt = pd.to_datetime(seattle_ngram_usage.session_datetime.min())
+latest_dt = pd.to_datetime(seattle_ngram_usage.session_datetime.max())
+earliest_day = earliest_dt.date().isoformat()
+latest_day = latest_dt.date().isoformat()
+
+# Formatted investigation grams
+formatted_investigation_grams = ""
+for i, gram in enumerate(INVESTIGATION_NGRAMS):
+  if i + 1 == len(INVESTIGATION_NGRAMS):
+    # include and
+    formatted_investigation_grams += f", and `'{gram}'`"
+  elif i == 0:
+    # start
+    formatted_investigation_grams += f"`'{gram}'`"
+  else:
+    # move along
+    formatted_investigation_grams += f", `'{gram}'`"
+
+# MARKDOWN TEMPLATE
+SEATTLE_NGRAMS_TIMESPAN_PARAGRAPH = (
+  f"For the Councils in Action dataset we apply the use of an n-gram visualization "
+  f"in order to demonstrate how keyword trends evolve over time. First we use "
+  f"longitudinal data from the transcripts of Seattle City Council meetings to show "
+  f"the usage of specific n-grams as a percent of total n-grams used for each meeting "
+  f"during this time period. @fig-seattle-ngram-viewer shows the usage of n-grams "
+  f"stemming from {formatted_investigation_grams} from `{earliest_day}` to "
+  f"`{latest_day}` during meetings of the Seattle City Council."
+)
+
+# Render paragraph
+Markdown(SEATTLE_NGRAMS_TIMESPAN_PARAGRAPH.strip())
 ```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for N-Gram Viewer"
+#| warning: false
+#| label: fig-seattle-ngram-viewer
+#| fig-cap: N-gram usage over time for Seattle City Council meetings. The x-axis represents individual days. The y-axis represents the usage of each n-gram – the percent of the number of times the specific n-gram was used for the day over the total number of n-grams used during the day.
+#| fig-cap-location: margin
+
+from cdp_data import plots
+plots.set_cdp_plotting_styles()
+
+# Plot
+grid = plots.plot_ngram_usage_histories(
+    INVESTIGATION_NGRAMS,
+    seattle_ngram_usage,
+    lmplot_kws=dict(  # extra plotting params
+        col="ngram",
+        col_wrap=2,
+        hue="ngram",
+        scatter_kws={"alpha": 0.2},
+        aspect=1.6,
+    ),
+)
+grid.fig.set_size_inches(6.8, 4.857)
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show Code for Generating Paragraph"
+#| warning: false
+
+INVESTIGATION_STATS = {
+  gram: {
+    "mean_min": {
+      "value": None,
+      "std": None,
+      "month_start_dt": None,
+    },
+    "mean_max": {
+      "value": None,
+      "std": None,
+      "month_start_dt": None,
+    },
+  }
+  for gram in INVESTIGATION_NGRAMS
+}
+
+# Convert these to months to interatively process the data
+earliest_month = datetime(earliest_dt.year, earliest_dt.month, 1)
+latest_month = datetime(latest_dt.year, latest_dt.month, 1)
+
+# Iter months and keep track of high and low months for each investigation ngram
+current_month = earliest_month
+while current_month < latest_month:
+  # Select data
+  month_end = current_month + relativedelta(months=1)
+  month_data = seattle_ngram_usage.loc[
+    (seattle_ngram_usage.session_datetime  >= current_month.date().isoformat())
+    & (seattle_ngram_usage.session_datetime < month_end.date().isoformat())
+  ]
+
+  # Get stats
+  for ngram in INVESTIGATION_NGRAMS:
+    stemmed_gram = keywords._stem_n_gram(ngram)
+    month_ngram_selected_data = month_data.loc[month_data.ngram == stemmed_gram]
+    month_day_ngram_percent_usage = month_ngram_selected_data.day_ngram_percent_usage
+    if len(month_day_ngram_percent_usage) > 0:
+      mean_percent_discussion = month_day_ngram_percent_usage.mean()
+      std_percent_discussion = month_day_ngram_percent_usage.std()
+    else:
+      mean_percent_discussion = 0.0
+      std_percent_discussion = 0.0
+
+    # Update
+    ngram_stats = INVESTIGATION_STATS[ngram]
+    if (
+      ngram_stats["mean_min"]["value"] is None
+      or ngram_stats["mean_min"]["value"] > mean_percent_discussion
+    ):
+      ngram_stats["mean_min"]["value"] = mean_percent_discussion
+      ngram_stats["mean_min"]["std"] = std_percent_discussion
+      ngram_stats["mean_min"]["month_start_dt"] = current_month
+    if (
+      ngram_stats["mean_max"]["value"] is None
+      or ngram_stats["mean_max"]["value"] < mean_percent_discussion
+    ):
+      ngram_stats["mean_max"]["value"] = mean_percent_discussion
+      ngram_stats["mean_max"]["std"] = std_percent_discussion
+      ngram_stats["mean_max"]["month_start_dt"] = current_month
+    
+    INVESTIGATION_STATS[ngram] = ngram_stats
+
+  # Update current month
+  current_month = month_end
+
+# MARKDOWN TEMPLATE
+SEATTLE_NGRAMS_STATS_INTRO = (
+  "To broaden our n-gram usage counting criteria to more than just our "
+  "specific query grams, we stem all grams in the dataset using a "
+  "[Snowball stemmer](https://www.nltk.org/api/nltk.stem.snowball.html?highlight=snowball%20stem#module-nltk.stem.snowball) "
+  "to collect and plot the stemmed n-grams @nlp-python. This stemming helps "
+  "collect and separate words together, for example, 'police' and 'policing' both "
+  "stem from 'polic' but 'policy' stems from 'polici' @snowball-stemmer."
+)
+
+# Construct sentences for each gram
+EACH_GRAM_STATS = []
+for i, gram in enumerate(INVESTIGATION_STATS):
+  # Construct main content
+  gram_stats = INVESTIGATION_STATS[gram]
+  single_ngram_stats = (
+    f"percent usage of words stemming from `'{gram}'` "
+    f"reached a maxmimum monthly average of "
+    f"`{round(gram_stats['mean_max']['value'], 3)}` "
+    f"± `{round(gram_stats['mean_max']['std'], 2)}` "
+    f"from `{gram_stats['mean_max']['month_start_dt'].date().isoformat()}` to "
+    f"`{(gram_stats['mean_max']['month_start_dt'] + relativedelta(months=1)).date().isoformat()}` "
+    f"and a minimum monthly average of "
+    f"`{round(gram_stats['mean_min']['value'], 3)}` "
+    f"± `{round(gram_stats['mean_min']['std'], 2)}` "
+    f"from `{gram_stats['mean_min']['month_start_dt'].date().isoformat()}` to "
+    f"`{(gram_stats['mean_min']['month_start_dt'] + relativedelta(months=1)).date().isoformat()}`."
+  )
+  
+  # Handle formatting
+  if i + 1 == len(INVESTIGATION_STATS):
+    chunk = f"Finally, the {single_ngram_stats}"
+  elif i == 0:
+    chunk = f"@fig-seattle-ngram-viewer shows that the {single_ngram_stats}"
+  else:
+    chunk = f"The {single_ngram_stats}"
+  
+  # Add this portion
+  EACH_GRAM_STATS.append(chunk)
+
+# Combine intro and chunks
+joined_gram_stats = " ".join(EACH_GRAM_STATS)
+joined_paragraph_parts = "\n\n".join([SEATTLE_NGRAMS_STATS_INTRO, joined_gram_stats])
+
+# Render paragraph
+Markdown(joined_paragraph_parts.strip())
+```
+
+## Conclusion
+
+In this paper, we have argued that the deployment of Council Data Project infrastructures to cover municipal councils is a solution to not only increasing access to data, but standardizing this data for eased analysis. We have demonstrated that, with the proof-of-concept Councils in Action dataset, data produced by CDP infrastructures can be easily processed and analyzed to observe shared and unique discussion trends across municipal councils. As the number of CDP instances increases, the Councils in Action dataset can be used for even more rich and varied analyses. For example, in their comprehensive study detailing who participates in local government meetings, Einstein et al., concluded that while there may be suggestive evidence that the trends they found hold for other states, the largest limitation of their work is that the data comes from a single state @einstein-local-gov-participates.
+
+While the findings of such work cannot be automated, the laborious annotation process required before research can be made easier with models to automatically annotate topical discussion, named entities and the linkage between discussion and legislative action, and the annotation of speaker turns. Because all CDP instances share common processing pipelines, delivering new features to each instance (municipality) that CDP covers is made simple. For example, to replicate a study like Jacobi and Schweers "Justice, Interrupted", but for every municipality covered by CDP, we have already begun to work on a [method for fine-tuning an audio-based speaker identification transformer](https://github.com/councildataproject/speakerbox) to label each sentence in a transcript with the known speaker’s name and using speaker diarization for labeling each of the unknown speaker’s during each meeting @pyannote.
+
+CDP and the Councils in Action dataset can also potentially be used to measure and automatically track the provenance and discussion from legislative action from "model bills" across the country @alec-exposed. A more general form of such work might look to measure the topical and legislative diffusion across the country, for example answering the question: "how long does it take for similar legislative actions regarding a topic to occur in multiple different municipalities?" There are additional computational research questions available for investigation with the Councils in Actions dataset such as the research and development of methods for minutes items and transcript alignment or even more generally, models for "outline generation" to automatically generate the minutes items of a meeting from a transcript [@align-then-summarize;@outline-generation].
+
+Lastly, we emphasize that our proof-of-concept work in this paper demonstrates the possibility of research produced using the Councils in Actions dataset to make its way back into the CDP instances themselves to remove barriers to municipal information for all members of the communities they serve. Council Data Project, as an open infrastructure platform, affords researchers, journalists, activists, and community members the opportunity to directly integrate their work with the data processing pipelines and/or web applications that are connected to CDP deployments. Integration efforts can directly support others working with the Councils in Action dataset, or members of the public hoping to understand the larger context of discussion, track legislative action, and hold elected officials accountable.

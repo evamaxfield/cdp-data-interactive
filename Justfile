@@ -10,6 +10,7 @@ BUILD_DIR := justfile_directory() + "/_build/"
 clean:
     rm -fr {{BUILD_DIR}}
     rm -fr {{justfile_directory()}}/.quarto
+    rm -fr {{justfile_directory()}}/index.ipynb
 
 # create conda env and install all deps
 setup name="cdp-data-interactive":
