@@ -21,20 +21,6 @@ bibliography: support/main.bib
 csl: support/nature.csl
 ---
 
-```{python}
-#| echo: false
-#| output: false
-
-# BLOCK ALL TQDM OUTPUT
-import tqdm
-
-def tqdm_replacement(iterable_object,*args,**kwargs):
-    return iterable_object
-  
-tqdm_copy = tqdm.tqdm # store it if you want to use it later
-tqdm.tqdm = tqdm_replacement
-```
-
 ## Quarto
 
 This document will explain what [Council Data Project](https://councildataproject.org) (CDP) is and how the data generated and stored by CDP instances make large-scale computational social and political science studies possible on the municipal level. It is an slightly modified, up-to-date, interactive version our ASIS&T AM22 conference paper [@cdp-asist-am22].
@@ -266,6 +252,7 @@ original_paper_seattle_ngram_usage = keywords.compute_ngram_usage_history(
     strict=False,  # stem grams
     start_datetime="2021-01-01",
     end_datetime="2022-04-01",
+    tqdm_kws=dict(disable=True),
 )
 ```
 
@@ -289,6 +276,7 @@ grid = plots.plot_ngram_usage_histories(
         scatter_kws={"alpha": 0.2},
         aspect=1.6,
     ),
+    tqdm_kws=dict(disable=True),
 )
 grid.fig.set_size_inches(6.8, 4.857)
 ```
@@ -314,6 +302,8 @@ INVESTIGATION_NGRAMS = [
 # Get data
 seattle_ngram_usage = keywords.compute_ngram_usage_history(
     infrastructure_slug=CDPInstances.Seattle,
+    raise_on_error=False,
+    tqdm_kws=dict(disable=True),
 )
 
 # Find earliest and latest datetimes
@@ -372,6 +362,7 @@ grid = plots.plot_ngram_usage_histories(
         scatter_kws={"alpha": 0.2},
         aspect=1.6,
     ),
+    tqdm_kws=dict(disable=True),
 )
 grid.fig.set_size_inches(6.8, 4.857)
 ```
@@ -506,9 +497,11 @@ from cdp_data import CDPInstances, keywords
 selected_munis = keywords.compute_ngram_usage_history(
     infrastructure_slug=[
       CDPInstances.Seattle,
-      CDPInstances.Portland,
+      CDPInstances.Louisville,
       CDPInstances.Oakland,
     ],
+    raise_on_error=False,
+    tqdm_kws=dict(disable=True),
 )
 ```
 
@@ -533,8 +526,9 @@ grid = plots.plot_ngram_usage_histories(
         scatter_kws={"alpha": 0.2},
         aspect=1.6,
     ),
+    tqdm_kws=dict(disable=True),
 )
-grid.fig.set_size_inches(6.8, 2.8 * 3)
+grid.fig.set_size_inches(6.4, 2.6 * 3)
 ```
 
 ## Conclusion
